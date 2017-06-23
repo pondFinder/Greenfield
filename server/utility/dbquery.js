@@ -11,6 +11,8 @@ They send back JSON to the callback provided. */
 
 //Create table models
 
+//TODO: handle model relatioships by writing relationship functions in models
+
 //user
 var User = bookshelf.Model.extend({
   tableName: 'users',
@@ -35,3 +37,36 @@ var WorkOrder = bookshelf.Model.extend({
 var WorkOrdersUsers = bookshelf.Model.extend({
   tableName: 'work_orders_users',
 });
+
+//----------------------query functions------------------------
+
+//------User queries---------
+
+
+//get all User data
+
+//pass in user ID, returns data model for user
+//queryObj is an object with conditions. examples:
+/*
+  getUser({
+    id: 1
+  });
+
+  getUser({
+    username: 'HimanshuP@gmail.com'
+  });
+*/
+exports.getUser = function (queryObj) {
+  new User({queryObj})
+    .fetch()
+    .then( function(model) {
+      return model;
+    });
+}
+
+//add new user
+exports.addUser = function (queryObj) {
+  users.set
+}
+
+
