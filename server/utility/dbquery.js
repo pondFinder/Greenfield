@@ -16,6 +16,17 @@ They send back JSON to the callback provided. */
 //user
 var User = bookshelf.Model.extend({
   tableName: 'users',
+
+  //has one company
+  company: function() {
+    return this.hasOne(Company);
+  },
+
+  //has many work orders
+  work_orders: function() {
+    return this.belongsToMany(WorkOrder);
+  }
+
 });
 
 //company
@@ -24,16 +35,32 @@ var Company = bookshelf.Model.extend({
 });
 
 //client
-var Clients = bookshelf.Model.extend({
+var Client = bookshelf.Model.extend({
   tableName: 'clients',
 });
 
 //work orders
 var WorkOrder = bookshelf.Model.extend({
   tableName: 'work_orders',
+
+  //has one client id
+  clients: function() {
+    return this.hasOne(Client);
+  },
+
+  //has one company id
+  companies: function() {
+    return this.hasOne(Company);
+  },
+
+  //has many users
+  users: function() {
+    return this.belongsToMany(User);
+  }
+
 });
 
-//work orders users join table
+//work orders users join table-- not sure how/if we ue this here?
 var WorkOrdersUsers = bookshelf.Model.extend({
   tableName: 'work_orders_users',
 });
@@ -46,7 +73,8 @@ var WorkOrdersUsers = bookshelf.Model.extend({
 //get all User data
 
 //pass in user ID, returns data model for user
-//queryObj is an object with conditions. examples:
+//queryObj is an object with conditions.
+//examples:
 /*
   getUser({
     id: 1
@@ -62,11 +90,29 @@ exports.getUser = function (queryObj) {
     .then( function(model) {
       return model;
     });
-}
+};
 
-//add new user
+//add new user (returns new user model)
+//NOTE: DO NOT INCLUDE the ID, this is an autoincrement value
+//example:
+/*
+  addUser({
+    username: 'Doug',
+    password: '123abc',
+    first_name: 'Doug',
+    last_name: 'Lyford',
+    role: 'worker' -or- 'admin',
+    created_at: '<timedate>',
+    photo: 'path/to/photo.jpg',
+    phone: '207-xxx-xxxx',
+    phone_alt: 'xxx-xxx-xxxx',
+    company_id: '5' --- Foreign Key
+  });
+*/
 exports.addUser = function (queryObj) {
-  users.set
-}
+  return users.set(queryObj);
+};
+
+
 
 
