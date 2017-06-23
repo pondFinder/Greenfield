@@ -110,7 +110,23 @@ exports.getUser = function (queryObj) {
   });
 */
 exports.addUser = function (queryObj) {
-  return users.set(queryObj);
+  return Users.set(queryObj);
+};
+
+
+
+//------Company queries---------
+
+exports.getCompany = function (queryObj) {
+  new Company({queryObj})
+    .fetch()
+    .then( function(model) {
+      return model;
+    });
+};
+
+exports.addCompany = function(queryObj) {
+  return Company.set(queryObj);
 };
 
 
