@@ -62,7 +62,7 @@ var WorkOrder = bookshelf.Model.extend({
 
 //work orders users join table-- not sure how/if we ue this here?
 var WorkOrdersUsers = bookshelf.Model.extend({
-  tableName: 'work_orders_users',
+  tableName: 'work_orders_users'
 });
 
 //----------------------query functions------------------------
@@ -85,7 +85,7 @@ var WorkOrdersUsers = bookshelf.Model.extend({
   });
 */
 exports.getUser = function (queryObj) {
-  new User({queryObj})
+  new User(queryObj)
     .fetch()
     .then( function(model) {
       return model;
