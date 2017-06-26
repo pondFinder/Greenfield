@@ -1,6 +1,6 @@
 var express = require('express');
 var bodyParser = require('body-parser');
-var handleErrors = require('error-handler');
+//var handleErrors = require('error-handler');
 
 var api = require('./routes/api');
 var http = require('http');
@@ -21,6 +21,15 @@ app.set('port', 8080);
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
+
+//basic error handler fn
+// function errorHandler (req, res, err) {
+//     console.log(err);
+//     res.writeHead(500).send();
+// };
+
+
+
 // app.use(methodOverride());
 // app.use(express.static(path.join(__dirname, 'server')));
 
@@ -49,8 +58,8 @@ app.post('/user-signup', api.userSignUp); // creates an admin user, mvp doesn't 
 app.post('/user-signin', api.userSignIn); // user login end point
 app.post('/create-order', api.createOrder); // when a create order request is made
 app.put('/update-order', api.updateOrder); // when an order is updated
-app.put('/complete-order', api.completeOrder); // when an order is completed
 app.delete('/delete-order', api.deleteOrder);// when an order is deleted
+app.get('/get-orders', api.getOrders);
 
 
 app.get('*', api.root); // redirect all others to the site root
@@ -67,5 +76,5 @@ console.log(Date());
 http.createServer(app).listen(app.get('port'), function (req, res) {
   console.log('Express server listening on port ' + app.get('port'));
   //add basic default error handling for all requests/ res
-  handleErrors(req, res, errorHandler);
+  //handleErrors(req, res, errorHandler);
 });
