@@ -10,7 +10,7 @@ They send back JSON to the callback provided. */
 //TODO: handle model relatioships by writing relationship functions in models
 
 //user
-var User = dbInterface.Model.extend({
+var User = dbInterface.db.Model.extend({
   tableName: 'users',
 
   //has one company
@@ -26,17 +26,17 @@ var User = dbInterface.Model.extend({
 });
 
 //company
-var Company = dbInterface.Model.extend({
+var Company = dbInterface.db.Model.extend({
   tableName: 'companies',
 });
 
 //client
-var Client = dbInterface.Model.extend({
+var Client = dbInterface.db.Model.extend({
   tableName: 'clients',
 });
 
 //work orders
-var WorkOrder = dbInterface.Model.extend({
+var WorkOrder = dbInterface.db.Model.extend({
   tableName: 'work_orders',
 
   //has one client id
@@ -57,7 +57,7 @@ var WorkOrder = dbInterface.Model.extend({
 });
 
 //work orders users join table-- not sure how/if we ue this here?
-var WorkOrdersUsers = dbInterface.Model.extend({
+var WorkOrdersUsers = dbInterface.db.Model.extend({
   tableName: 'work_orders_users'
 });
 
@@ -80,11 +80,11 @@ var WorkOrdersUsers = dbInterface.Model.extend({
     username: 'HimanshuP@gmail.com'
   });
 */
-exports.getUser = function (queryObj) {
+exports.getUser = function (queryObj, cb) {
   new User(queryObj)
     .fetch()
     .then( function(model) {
-      return model;
+      cb(model);
     });
 };
 
@@ -105,54 +105,62 @@ exports.getUser = function (queryObj) {
     company_id: '5' --- Foreign Key
   });
 */
-exports.addUser = function (queryObj) {
+exports.addUser = function (queryObj, cb) {
   new User(queryObj).save()
     .then(function (model) {
-      return model;
+      cb(model);
     });
 };
 
 //------Order queries -----------
-exports.createOrder = function (queryObj) {
-  new WorkOrder(queryObj).save()
+exports.getOrders = function (cb) {
+  new WorkOrder()
+    .fetchAll()
     .then(function (model) {
-      return model;
+      cb(model);
     });
 };
 
-exports.updateOrder = function (queryObj) {
+exports.createOrder = function (queryObj, cb) {
+  new WorkOrder(queryObj).save()
+    .then(function (model) {
+      cb(model);
+    });
+};
+
+exports.updateOrder = function (queryObj, cb) {
   //same code as createOrder, but simply do not pass in
   // {id: } in the queryObj and it will be treated as an update
   //rather than a creation.
   new WorkOrder(queryObj).save()
     .then(function (model) {
-      return model;
+      cb(model);
     });
 };
 
-exports.deleteOrder = function (queryObj) {
+exports.deleteOrder = function (queryObj, cb) {
   new WorkOrder(queryObj)
-    .destroy()
+    .destroy({require: true})
     .then(function (model) {
-      return model;
+      cb(model);
     });
 };
 
 //------Company queries---------
 
-exports.getCompany = function (queryObj) {
-  new Company({queryObj})
+exports.getCompany = function (queryObj, cb) {
+  new Company(queryObj)
     .fetch()
     .then( function(model) {
-      return model;
+      cb(model);
     });
 };
 
-exports.addCompany = function(queryObj) {
-  new Company({queryObj})
+exports.addCompany = function(queryObj, cb) {
+  new Company(queryObj)
     .save()
     .then( function(model) {
-      return model;
+      cb(model);
     });
 };
 
