@@ -1,9 +1,4 @@
-var knex = require('knex') ({
-  //First shot at require statement, may need refactoring (discuss w/ Semie)
-  client: 'SQLite3'
-});
-
-var bookshelf = require('bookshelf')(knex);
+var dbInterface = require('../db/config.js');
 
 /* these functions are called by api.js and query the database.
 They send back JSON to the callback provided. */
@@ -14,7 +9,7 @@ They send back JSON to the callback provided. */
 //TODO: handle model relatioships by writing relationship functions in models
 
 //user
-var User = bookshelf.Model.extend({
+var User = dbInterface.Model.extend({
   tableName: 'users',
 
   //has one company
@@ -30,17 +25,17 @@ var User = bookshelf.Model.extend({
 });
 
 //company
-var Company = bookshelf.Model.extend({
+var Company = dbInterface.Model.extend({
   tableName: 'companies',
 });
 
 //client
-var Client = bookshelf.Model.extend({
+var Client = dbInterface.Model.extend({
   tableName: 'clients',
 });
 
 //work orders
-var WorkOrder = bookshelf.Model.extend({
+var WorkOrder = dbInterface.Model.extend({
   tableName: 'work_orders',
 
   //has one client id
@@ -61,7 +56,7 @@ var WorkOrder = bookshelf.Model.extend({
 });
 
 //work orders users join table-- not sure how/if we ue this here?
-var WorkOrdersUsers = bookshelf.Model.extend({
+var WorkOrdersUsers = dbInterface.Model.extend({
   tableName: 'work_orders_users'
 });
 
@@ -113,7 +108,10 @@ exports.addUser = function (queryObj) {
   return Users.set(queryObj);
 };
 
+//------Order queries -----------
+exports.createOrder(queryObj) {
 
+};
 
 //------Company queries---------
 
