@@ -1,8 +1,9 @@
-var dbInterface = require('../db/config.js');
+var dbInterface = require('../db/config');
 
 /* these functions are called by api.js and query the database.
 They send back JSON to the callback provided. */
 
+//get users
 
 //Create table models
 
@@ -105,12 +106,36 @@ exports.getUser = function (queryObj) {
   });
 */
 exports.addUser = function (queryObj) {
-  return Users.set(queryObj);
+  new User(queryObj).save()
+    .then(function (model) {
+      return model;
+    });
 };
 
 //------Order queries -----------
-exports.createOrder(queryObj) {
+exports.createOrder = function (queryObj) {
+  new WorkOrder(queryObj).save()
+    .then(function (model) {
+      return model;
+    });
+};
 
+exports.updateOrder = function (queryObj) {
+  //same code as createOrder, but simply do not pass in
+  // {id: } in the queryObj and it will be treated as an update
+  //rather than a creation.
+  new WorkOrder(queryObj).save()
+    .then(function (model) {
+      return model;
+    });
+};
+
+exports.deleteOrder = function (queryObj) {
+  new WorkOrder(queryObj)
+    .destroy()
+    .then(function (model) {
+      return model;
+    });
 };
 
 //------Company queries---------
@@ -124,7 +149,11 @@ exports.getCompany = function (queryObj) {
 };
 
 exports.addCompany = function(queryObj) {
-  return Company.set(queryObj);
+  new Company({queryObj})
+    .save()
+    .then( function(model) {
+      return model;
+    });
 };
 
 
