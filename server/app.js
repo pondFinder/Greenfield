@@ -1,17 +1,10 @@
+var express = require('express');
+var bodyParser = require('body-parser');
+var errorHandler = require('error-handler');
 
-/**
- * Module dependencies
- */
-
-var express = require('express'),
-  bodyParser = require('body-parser'),
-  methodOverride = require('method-override'),
-  errorHandler = require('error-handler'),
-  morgan = require('morgan'),
-  routes = require('./routes'),
-  api = require('./routes/api'),
-  http = require('http'),
-  path = require('path');
+var api = require('./routes/api');
+var http = require('http');
+var path = require('path');
 
 var app = module.exports = express();
 
@@ -21,40 +14,48 @@ var app = module.exports = express();
  */
 
 // all environments
-app.set('port', process.env.PORT || 3000);
-app.set('views', __dirname + '/views');
-app.set('view engine', 'jade');
-app.use(morgan('dev'));
-app.use(bodyParser());
-app.use(methodOverride());
-app.use(express.static(path.join(__dirname, 'public')));
+app.set('port', 8080);
+// app.set('views', __dirname + '/views');
+// app.set('view engine', 'jade');
+// app.use(morgan('dev'));
 
-var env = process.env.NODE_ENV || 'development';
+app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.json());
+// app.use(methodOverride());
+// app.use(express.static(path.join(__dirname, 'server')));
 
-// development only
-if (env === 'development') {
-  app.use(express.errorHandler());
-}
+// var env = process.env.NODE_ENV || 'development';
 
-// production only
-if (env === 'production') {
-  // TODO
-}
+// // development only
+// if (env === 'development') {
+//   app.use(express.errorHandler());
+// }
+
+// // production only
+// if (env === 'production') {
+//   // TODO
+// }
 
 
 /**
  * Routes
  */
-
-// serve index and view partials
-app.get('/', routes.index);
-app.get('/partials/:name', routes.partials);
-
 // JSON API
-app.get('/api/name', api.name);
 
-// redirect all others to the index (HTML5 history)
-app.get('*', routes.index);
+
+app.get('/', api.root);  // client root
+
+app.post('/user-signup', api.userSignUp) // creates an admin user, mvp doesn't have other user roles yet
+app.post('/user-signin', api.userSignIn) // user login end point
+app.post('/create-order', api.createOrder) // when a create order request is made
+app.put('/update-order', api.updateOrder) // when an order is updated
+app.put('/complete-order', api.completeOrder) // when an order is completed
+app.delete('/delete-order', api.deleteOrder) // when an order is deleted
+
+
+app.get('*', api.root); // redirect all others to the site root
+
+
 
 
 /**
