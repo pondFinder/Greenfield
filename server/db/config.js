@@ -49,8 +49,46 @@ db.knex.schema.createTableIfNotExists('clients', function(clients) {
   clients.string('city', 100);
   clients.string('state_province', 10);
   clients.string('postal_code', 10);
-  clients.string('country', 15);
   clients.string('email', 30);
 });
 
+//Is it ok to reference primary contact by id in users?
+db.knex.schema.createTableIfNotExists('companies', function(companies) {
+  companies.increments('id').primary();
+  companies.foreign('primary_contact').references('id').inTable('users');
+  companies.string('street_address_1', 200);
+  companies.string('street_address_2', 200);
+  companies.string('city', 100);
+  companies.string('state_province', 10);
+  companies.string('postal_code', 10);
+  companies.string('email', 30);
+});
+
+db.knex.schema.createTableIfNotExists('company_users', function(table) {
+  table.increments('id').primary();
+  table.foreign('company_id').references('id').inTable('companies');
+  table.foreign('user_id').references('id').inTable('users');
+});
+
+db.knex.schema.createTableIfNotExists('company_clients', function(table) {
+  table.increments('id').primary();
+  table.foreign('company_id').references('id').inTable('companies');
+  table.foreign('client_id').references('id').inTable('clients');
+});
+
+db.knex.schema.createTableIfNotExists('company_work_orders', function(table) {
+  table.increments('id').primary();
+  table.foreign('company_id').references('id').inTable('companies');
+  table.foreign('work_order_id').references('id').inTable('orders');
+});
+
 module.exports.db = db;
+module.exports.tables = {
+  users: 'users',
+  clients: 'clients',
+  workOrders: 'work_orders',
+  companies: 'companies',
+  companyUsers: 'company_users',
+  companyWorkOrders: 'company_work_orders',
+  companyClients: 'company_clients'
+};
