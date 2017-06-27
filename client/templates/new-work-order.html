@@ -1,0 +1,30 @@
+<div>
+  <form>
+    <div><h4>Client Information</h4>
+      <input type="text" ng-model="client.first_name" placeholder="Client First Name"></input>
+      <input type="text" ng-model="client.last_name" placeholder="Client Last Name"
+      ></input>
+      <input type="text" ng-model="client.street_address" placeholder="Client Street Address"></input>
+      <input type="text" ng-model="client.street_address_2" placeholder="Client Street Address cont."></input>
+      <input type="text" ng-model="client.street_address" placeholder="Client Street Address"></input>
+      <input type="text" ng-model="client.city" placeholder="Client City"></input>
+      <input type="text" ng-model="client.state_province" placeholder="Client State"></input>
+      <input type="text" ng-model="client.postal_code" placeholder="Client Postal Code"></input>
+      <input type="text" placeholder="Client Phone"></input>
+      <input type="text" placeholder="Client Email"></input>
+      <div><h4>Job Information</h4>
+
+      <input type="text" ng-model="work_orders.job_info" placeholder="Job Description"></input>
+      <input type="text" ng-model="work_orders.notes" placeholder="Job Notes"></input>
+      <input type="text" ng-model="user.first_name" placeholder="Assigned to First Name"></input>
+      <input type="text" ng-model="user.last_name" placeholder="Assigned to Last Name"></input>
+      <input typer="text"></input>
+      <input type="text" ng-model="work_orders.duration" placeholder="Job Duration"></input>
+      <!-- Need photo field. No idea how to do this -->
+
+    </div>
+      <button ng-click="$ctrl.createWorkOrder()">Create Work Order </button>
+    </div>
+
+  </form>
+</div>
