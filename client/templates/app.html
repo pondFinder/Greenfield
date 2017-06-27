@@ -1,0 +1,28 @@
+<div class="container">
+  <!-- nav.html template file goes here -->
+  <navigation />
+
+    <!-- User control section -->
+  <div class="row" ng-controller="">
+    <!-- User Profile -->
+    <div class="col-md-4" ng-controller="UserProfileCtrl">
+      <!-- user-profile.html template file goes here -->
+      <user-profile />
+    </div>
+    <!-- User Controls -->
+    <div class="col-md-8" ng-controller="">
+      <!-- news-feed.html template file goes here -->
+      <news-feed />
+    </div>
+  </div>
+  <!-- Work order feed -->
+  <div class="row">
+    <div class="col-md-12">
+      <div class="well" ng-controller="work-order-list">
+      <!-- work-order-entry.html template used to place work-order entries here -->
+      <work-order-entry />
+      <!-- when a user clicks on one, it is replaced with a work-order-expanded.html view. -->
+      </div>
+    </div>
+  </div>
+</div>
