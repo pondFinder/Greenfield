@@ -6,5 +6,5 @@ angular.module('work-orders')
 
 .component('work-orders', {
   controller: 'WorkOrdersCtrl',
-  templateUrl: './templates/work-orders.html'
+  templateUrl: '../templates/work-orders.html'
 });
