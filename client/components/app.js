@@ -8,5 +8,5 @@ angular.module('work-orders', [])
 
 .component('app', {
   controller: 'AppCtrl',
-  templateUrl: '../templates/index.html'
+  templateUrl: '../templates/app.html'
 });

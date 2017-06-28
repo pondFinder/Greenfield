@@ -5,7 +5,7 @@ angular.module('work-orders')
 
 })
 
-.component('user-profile', {
+.component('userProfile', {
   controller: 'UserProfileCtrl',
-  templateUrl: '../templates/user-profile.html'
+  templateUrl: '../templates/userProfile.html'
 });
