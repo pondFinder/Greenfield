@@ -1,5 +1,9 @@
 <!-- work order feed  -->
-<div class="well">
+<div class="well text-center">
+
+  <!-- Button for creating new work orders -->
+  <button type="button" class="btn btn-lg btn-primary bt-create-work-order" ng-click="$ctrl.createWorkOrder($event)">Create Work Order</button>
+
   <!-- Use Angular here to do an ng-repeat to put all work orders into the well -->
   <work-order-entry />
 </div>
