@@ -1,5 +1,44 @@
 <!-- work order feed  -->
-<div class="well">
+<div class="well text-center">
+
+
+
+
+  <!-- This section is a div to store the create new work order view.  It is hidden on page load and toggles when the create work order button is pressed. -->
+  <div class="create-work-order-form-section">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h3 class="panel-title">Create new Work Order</h3>
+      </div>
+      <div class="panel-body">
+      <!-- Input group for creating new work order -->
+        <div class="input-group">
+          <!-- Client Name -->
+          <span class="input-group-addon" id="basic-addon1">Client:</span>
+          <input type="text" class="form-control wo-client-name" ng-model="$ctrl.woClientName" placeholder="Enter Client Name" aria-describedby="basic-addon1">
+
+          <!-- Estimated Duration -->
+          <span class="input-group-addon" id="basic-addon1">Estimated Duration:</span>
+          <input type="text" class="form-control wo-estimated-duration" ng-model="$ctrl.woEstimatedDuration" placeholder="Ex: 6 hours, 4 weeks, 12 business days" aria-describedby="basic-addon1">
+
+          <!-- Job Details -->
+          <span class="input-group-addon" id="basic-addon1">Details:</span>
+          <input type="text" class="form-control wo-job-details" ng-model="$ctrl.woJobDetails" placeholder="Enter Job Details" aria-describedby="basic-addon1">
+
+          <!-- Image URL -->
+          <span class="input-group-addon" id="basic-addon1">Photo URL:</span>
+          <input type="text" class="form-control wo-photo-url" ng-model="$ctrl.woPhotoUrl" placeholder="http://vignette2.wikia.nocookie.net/p__/images/6/68/2252541-snake_l.jpeg/revision/latest?cb=20140314003849&path-prefix=protagonist" aria-describedby="basic-addon1">
+        </div>
+
+        <!-- Button for creating new work orders -->
+        <button type="button" class="btn btn-lg btn-primary bt-create-work-order" ng-click="$ctrl.createWorkOrder($event)">Submit</button>
+
+      </div>
+    </div>
+  </div>
+
   <!-- Use Angular here to do an ng-repeat to put all work orders into the well -->
-  <work-order-entry />
+  <div class="entry-feed-section">
+    <work-order-entry />
+  </div>
 </div>
