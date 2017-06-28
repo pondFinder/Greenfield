@@ -75,6 +75,7 @@ db.knex.schema.createTableIfNotExists('company', function(company) {
   company.string('state_province', 10);
   company.string('postal_code', 10);
   company.string('email', 30);
+  company.string('announcements', 1000);
 })
   .then( (table) => {
     console.log('Table exists: ', table);
