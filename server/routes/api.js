@@ -5,9 +5,6 @@
 var fileToServe = require('../utility/paths');
 var dbHelpers = require('../utility/dbquery');
 
-exports.root = (req, res) => {
-  res.status(200).send( fileToServe.paths.root );
-};
 
 exports.userSignUp = (req, res) => {
 

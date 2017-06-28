@@ -4,7 +4,7 @@ angular.module('work-orders')
 
 })
 
-.component('nav', {
+.component('navigation', {
   controller: 'NavCtrl',
-  templateUrl: './templates/nav.html'
+  templateUrl: '../templates/navigation.html'
 });

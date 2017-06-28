@@ -22,6 +22,8 @@ app.set('port', 8080);
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
+app.use(express.static('../client'));
+
 //basic error handler fn
 // function errorHandler (req, res, err) {
 //     console.log(err);
@@ -51,8 +53,15 @@ app.use(bodyParser.json());
  */
 // JSON API
 
+// exports.root = (req, res) => {
+//   app.use(express.static('../client'))
+//   res.status(200).send( fileToServe.paths.root );
+// };
 
-app.get('/', api.root);  // client root
+
+app.get('/', function(req, res){
+  res.status(200).end()
+});  // client root
 
 app.post('/user-signup', api.userSignUp); // creates an admin user, mvp doesn't have other user roles yet
 app.post('/user-signin', api.userSignIn); // user login end point
@@ -62,7 +71,7 @@ app.delete('/delete-order', api.deleteOrder);// when an order is deleted
 app.get('/get-orders', api.getOrders);
 
 
-app.get('*', api.root); // redirect all others to the site root
+// app.get('*', api.root); // redirect all others to the site root
 
 
 

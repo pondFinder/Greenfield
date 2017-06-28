@@ -1,11 +1,12 @@
 'use strict';
 angular.module('work-orders', [])
 
-.controller('AppCtrl', function($http) {
+.controller('AppCtrl', function() {
+
 
 })
 
 .component('app', {
   controller: 'AppCtrl',
-  templateUrl: './index.html'
+  templateUrl: '../templates/app.html'
 });

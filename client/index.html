@@ -6,32 +6,8 @@
   </head>
   <body>
     <!-- Main page wrapper -->
-    <div class="container" ng-controller="app">
-      <!-- nav.html template file goes here -->
-
-
-        <!-- User control section -->
-      <div class="row">
-        <!-- User Profile -->
-        <div class="col-md-4" ng-controller="user-profile">
-          <!-- user-profile.html template file goes here -->
-        </div>
-        <!-- User Controls -->
-        <div class="col-md-8" ng-controller="news-feed">
-          <!-- news-feed.html template file goes here -->
-        </div>
-      </div>
-      <!-- Work order feed -->
-      <div class="row">
-        <div class="col-md-12">
-          <div class="well" ng-controller="work-order-list">
-          <!-- work-order-entry.html template used to place work-order entries here -->
-          <!-- when a user clicks on one, it is replaced with a work-order-expanded.html view. -->
-          </div>
-        </div>
-      </div>
-    </div>
-
+    <app ng-app="work-orders">
+    </app>
 
 
 
@@ -44,9 +20,10 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
     <!-- Local Scripts -->
-    <script src="components/nav.js"></script>
+    <script src="components/app.js"></script>
+    <script src="components/navigation.js"></script>
     <script src="components/news-feed.js"></script>
-    <script src="components/user-profile.js"></script>
+    <script src="components/userProfile.js"></script>
     <script src="components/work-order-feed.js"></script>
     <script src="components/work-order.js"></script>
   </body>
