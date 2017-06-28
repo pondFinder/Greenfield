@@ -1,3 +1,4 @@
+var helpers = require('../server/utility/dbquery.js');
 // 'use strict';
 
 // /* Services */
@@ -15,3 +16,11 @@
 //       })
 //     }
 //   });
+
+angular.module('work-orders').
+  service('dataHandler', function() {
+    //access the order data here
+    this.orderData = helpers.getOrders(function(model){
+      return model;
+    })
+  })

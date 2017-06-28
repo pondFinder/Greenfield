@@ -1,5 +1,10 @@
 <!-- work order feed  -->
 <div class="well">
   <!-- Use Angular here to do an ng-repeat to put all work orders into the well -->
-  <work-order-entry />
+  <div ng-click="expandOrder()">
+
+  </div>
+  <div ng-repeat="singleOrder in orders">
+    <work-order-entry ng-click="expandOrder(singleOrder)" order="singleOrder"/>
+  </div>
 </div>
