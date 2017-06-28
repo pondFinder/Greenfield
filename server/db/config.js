@@ -39,7 +39,8 @@ db.knex.schema.createTableIfNotExists('work_orders', function(orders) {
   orders.dateTime('created_at');
   orders.boolean('is_done').defaultTo(false);
   orders.text('duration', 'mediumtext');
-  orders.integer('client_id');
+  // orders.integer('client_id');
+  orders.string('client');
   orders.string('photo');
   // orders.foreign('company_id').references('company.id');
 })
