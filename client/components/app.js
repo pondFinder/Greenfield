@@ -1,5 +1,4 @@
-'use strict';
-angular.module('work-orders', [])
+angular.module('work-orders')
 
 .controller('AppCtrl', function() {
 

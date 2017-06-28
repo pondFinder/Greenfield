@@ -4,10 +4,10 @@ angular.module('work-orders')
 
 })
 
-.component('new-work-order', {
+.component('newWorkOrder', {
   controller: 'NewWorkOrderCtrl',
   bindings: {
     currentDate: '<'
   },
-  templateUrl: '../templates/new-work-order.html'
+  templateUrl: '../templates/newWorkOrder.html'
 });

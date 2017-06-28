@@ -4,7 +4,7 @@ angular.module('work-orders')
 
 })
 
-.component('news-feed', {
+.component('newsFeed', {
   controller: 'NewsFeedCtrl',
-  templateUrl: '../templates/news-feed.html'
+  templateUrl: '../templates/newsFeed.html'
 });
