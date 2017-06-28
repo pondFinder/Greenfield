@@ -36,7 +36,7 @@ db.knex.schema.createTableIfNotExists('work_orders', function(orders) {
   orders.increments('id').primary();
   orders.text('notes', 'mediumtext');
   orders.text('job_info', 'mediumtext');
-  orders.dateTime('created_at');
+  orders.text('created_at', 'mediumtext');
   orders.boolean('is_done').defaultTo(false);
   orders.text('duration', 'mediumtext');
   // orders.integer('client_id');
@@ -48,49 +48,49 @@ db.knex.schema.createTableIfNotExists('work_orders', function(orders) {
     console.log('Table exists: ', table);
   });
 
-db.knex.schema.createTableIfNotExists('clients', function(clients) {
-  clients.increments('id').primary();
-  clients.string('first_name', 25);
-  clients.string('last_name', 60);
-  clients.string('phone', 15);
-  clients.string('alt_phone', 15);
-  clients.string('street_address_1', 200);
-  clients.string('street_address_2', 200);
-  clients.string('city', 100);
-  clients.string('state_province', 10);
-  clients.string('postal_code', 10);
-  clients.string('email', 30);
-})
-  .then( (table) => {
-    console.log('Table exists: ', table);
-  });
+// db.knex.schema.createTableIfNotExists('clients', function(clients) {
+//   clients.increments('id').primary();
+//   clients.string('first_name', 25);
+//   clients.string('last_name', 60);
+//   clients.string('phone', 15);
+//   clients.string('alt_phone', 15);
+//   clients.string('street_address_1', 200);
+//   clients.string('street_address_2', 200);
+//   clients.string('city', 100);
+//   clients.string('state_province', 10);
+//   clients.string('postal_code', 10);
+//   clients.string('email', 30);
+// })
+//   .then( (table) => {
+//     console.log('Table exists: ', table);
+//   });
 
 //Is it ok to reference primary contact by id in users?
-db.knex.schema.createTableIfNotExists('company', function(company) {
-  company.increments('id').primary();
-  company.integer('primary_contact');
-  // company.foreign('primary_contact').references('users.id');
-  company.string('street_address_1', 200);
-  company.string('street_address_2', 200);
-  company.string('city', 100);
-  company.string('state_province', 10);
-  company.string('postal_code', 10);
-  company.string('email', 30);
-  company.string('announcements', 1000);
-})
-  .then( (table) => {
-    console.log('Table exists: ', table);
-  });
+// db.knex.schema.createTableIfNotExists('company', function(company) {
+//   company.increments('id').primary();
+//   company.integer('primary_contact');
+//   // company.foreign('primary_contact').references('users.id');
+//   company.string('street_address_1', 200);
+//   company.string('street_address_2', 200);
+//   company.string('city', 100);
+//   company.string('state_province', 10);
+//   company.string('postal_code', 10);
+//   company.string('email', 30);
+//   company.string('announcements', 1000);
+// })
+//   .then( (table) => {
+//     console.log('Table exists: ', table);
+//   });
 
-db.knex.schema.createTableIfNotExists('users_work_orders', function(table) {
-  table.increments('id').primary();
-  table.integer('user_id');
-  table.integer('work_order_id');
-  // table.foreign('user_id').references('users.id');
-  // table.foreign('work_order_id').references('orders.id');
-})
-  .then( (table) => {
-    console.log('Table exists: ', table);
-  });
+// db.knex.schema.createTableIfNotExists('users_work_orders', function(table) {
+//   table.increments('id').primary();
+//   table.integer('user_id');
+//   table.integer('work_order_id');
+//   // table.foreign('user_id').references('users.id');
+//   // table.foreign('work_order_id').references('orders.id');
+// })
+//   .then( (table) => {
+//     console.log('Table exists: ', table);
+//   });
 
 module.exports.db = db;
