@@ -22,7 +22,7 @@ db.knex.schema.createTableIfNotExists('users', function(users) {
   users.string('last_name', 60);
   users.string('role', 30).defaultTo('user');
   users.dateTime('date');
-  //users.specifyType('photo', 'BLOB');
+  users.string('photo');
   users.string('phone', 15);
   users.string('phone_alt', 15);
   users.integer('company_id');
@@ -40,6 +40,7 @@ db.knex.schema.createTableIfNotExists('work_orders', function(orders) {
   orders.boolean('is_done').defaultTo(false);
   orders.text('duration', 'mediumtext');
   orders.integer('client_id');
+  orders.string('photo');
   // orders.foreign('company_id').references('company.id');
 })
   .then( (table) => {
