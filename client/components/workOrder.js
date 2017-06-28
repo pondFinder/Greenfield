@@ -4,7 +4,7 @@ angular.module('work-orders')
 
 })
 
-.component('work-orders', {
+.component('workOrders', {
   controller: 'WorkOrdersCtrl',
-  templateUrl: '../templates/work-orders.html'
+  templateUrl: '../templates/workOrders.html'
 });
