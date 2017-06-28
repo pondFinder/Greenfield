@@ -22,7 +22,7 @@ db.knex.schema.createTableIfNotExists('users', function(users) {
   users.string('last_name', 60);
   users.string('role', 30).defaultTo('user');
   users.dateTime('date');
-  //users.specifyType('photo', 'BLOB');
+  users.string('photo');
   users.string('phone', 15);
   users.string('phone_alt', 15);
   users.integer('company_id');
@@ -39,7 +39,9 @@ db.knex.schema.createTableIfNotExists('work_orders', function(orders) {
   orders.dateTime('created_at');
   orders.boolean('is_done').defaultTo(false);
   orders.text('duration', 'mediumtext');
-  orders.integer('client_id');
+  // orders.integer('client_id');
+  orders.string('client');
+  orders.string('photo');
   // orders.foreign('company_id').references('company.id');
 })
   .then( (table) => {
@@ -74,6 +76,7 @@ db.knex.schema.createTableIfNotExists('company', function(company) {
   company.string('state_province', 10);
   company.string('postal_code', 10);
   company.string('email', 30);
+  company.string('announcements', 1000);
 })
   .then( (table) => {
     console.log('Table exists: ', table);
