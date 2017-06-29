@@ -8,3 +8,9 @@
   margin-bottom: 5px;
   margin-top: 5px;
 }
+
+.close-order {
+  float: right;
+  color: #ff4d4d;
+  font-size: 1.5em;
+}
