@@ -123,6 +123,7 @@ exports.getOrders = function (cb) {
 
 exports.getOrdersSelective = function (queryObj, cb) {
   new WorkOrder(queryObj)
+    .where(queryObj)
     .fetchAll()
     .then(function (model) {
       cb(model);

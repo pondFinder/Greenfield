@@ -43,7 +43,7 @@ exports.getOrders = (req, res) => {
 };
 
 exports.getOrdersSelective = (req, res) => {
-  var isDone = req.params.isDone;
+  var isDone = (req.params.isDone === '1') ? 1 : 0;
   dbHelpers.getOrdersSelective({is_done: isDone}, (orders) => {
     res.send(orders);
   });
