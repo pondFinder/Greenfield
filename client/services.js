@@ -25,10 +25,11 @@ angular.module('work-orders').
 
     this.orderInformation = function(order){
       this.orderData = order;
-      if(this.orderData.is_done === 0){
-      this.orderData.is_done = 'In Progress';
-      }else{
-        this.orderData.is_done = 'Complete';
+      this.orderStatus
+      if(this.orderData.is_done === false){
+        this.orderStatus = 'In Progress';
+      }else if (this.orderData.is_done === true){
+        this.orderStatus = 'Complete';
       }
     }
   })

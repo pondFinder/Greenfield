@@ -8,7 +8,7 @@ angular.module('work-orders')
   this.expandOrder = function(order){
     dataHandler.orderInformation(order);
     this.show = !this.show;
-    console.log(order);
+    console.log(dataHandler.orderData)
   }
   var app = this;
 
