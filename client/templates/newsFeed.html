@@ -1,7 +1,11 @@
 <!-- news feed template -->
-<div class="panel panel-default">
-  <div class="panel-heading text-center"><span class="company-name">ServPro Inc.</span> Company Announcements</div>
-  <div class="panel-body">
-    No Announcements.
+<div class="panel panel-primary">
+  <div class="panel-heading text-center">
+    Work Order Summary
+  </div>
+  <div class="panel-body text-center">
+  <div class="row"> <h5>In Progress: {{$ctrl.inProgressOrders}} </h5>
+  </div>
+  <div class="row"> <h5>Completed: {{$ctrl.completedOrders}} </h5>
   </div>
 </div>
