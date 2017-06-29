@@ -1,5 +1,5 @@
 <!-- work order entry view template -->
-<div class="panel panel-primary" ng-click="showExpanded(data)">
+<div class="panel panel-primary">
   <div class="panel-heading text-center">
     <h5>Work Order #1236 - In Progress</h5>
   </div>
@@ -14,9 +14,9 @@
       <!-- Work order details -->
       <div class="col-md-6">
         <ul class="list-group">
-          <li class="list-group-item"><b>Created:</b> 2017/05/15 4:33 AM</li>
-          <li class="list-group-item"><b>Estimated time:</b> 4.5 Hours</li>
-          <li class="list-group-item"><b>Client:</b> Oak Hill Farms</li>
+          <li class="list-group-item"><b>Created:</b> {{$ctrl.information.created_at}}</li>
+          <li class="list-group-item"><b>Estimated time:</b> {{$ctrl.information.duration}}</li>
+          <li class="list-group-item"><b>Client:</b> {{order[0].client}}</li>
         </ul>
     </div>
   </div>

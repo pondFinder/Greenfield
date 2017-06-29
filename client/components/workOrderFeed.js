@@ -1,14 +1,26 @@
 angular.module('work-orders')
 
 
-.controller('WorkOrderFeedCtrl', function($http, dataHandler) {
-  this.orders = dataHandler.orderData;
+.controller('WorkOrderFeedCtrl', function($scope, $http, dataHandler) {
+  $scope.orders;
   this.currentOrder;
   this.show = false;
-  this.expandOrder = function(order) {
-    this.currentOrder = order;
+  this.expandOrder = function(order){
+    dataHandler.orderInformation(order);
     this.show = !this.show;
+    console.log(order);
   }
+  var app = this;
+
+  this.getWorkOrders = function () {
+    $http.get('/get-orders')
+    .then(function(res) {
+      app.workOrders = res.data;
+      $scope.orders = app.workOrders;
+    });
+  };
+  this.getWorkOrders()
+
   this.createWorkOrder = (e) => {
     console.log('$ctrl model binds for work-order submit: ', this.woJobDetails, this.woEstimatedDuration, this.woClientName, this.woPhotoUrl);
 

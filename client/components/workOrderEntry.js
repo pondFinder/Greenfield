@@ -1,7 +1,7 @@
 angular.module('work-orders')
 
-.controller('WorkOrderEntryCtrl', function() {
-
+.controller('WorkOrderEntryCtrl', function(dataHandler) {
+    this.information = dataHandler.orderData;
 })
 
 .component('workOrderEntry', {
