@@ -37,9 +37,16 @@ exports.updateOrder = (req, res) => {
 };
 
 exports.getOrders = (req, res) => {
-    dbHelpers.getOrders((orders) => {
-        res.send(orders);
-    });
+  dbHelpers.getOrders((orders) => {
+    res.send(orders);
+  });
+};
+
+exports.getOrdersSelective = (req, res) => {
+  var isDone = req.params.isDone;
+  dbHelpers.getOrdersSelective({is_done: isDone}, (orders) => {
+    res.send(orders);
+  });
 };
 
 exports.deleteOrder = (req, res) => {

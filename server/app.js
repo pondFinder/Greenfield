@@ -59,8 +59,8 @@ app.use(express.static('../client'));
 // };
 
 
-app.get('/', function(req, res){
-  res.status(200).end()
+app.get('/', function(req, res) {
+  res.status(200).end();
 });  // client root
 
 app.post('/user-signup', api.userSignUp); // creates an admin user, mvp doesn't have other user roles yet
@@ -69,6 +69,7 @@ app.post('/create-order', api.createOrder); // when a create order request is ma
 app.put('/update-order', api.updateOrder); // when an order is updated
 app.delete('/delete-order', api.deleteOrder);// when an order is deleted
 app.get('/get-orders', api.getOrders);
+app.get('/get-orders-selective/:isDone', api.getOrdersSelective);
 
 
 // app.get('*', api.root); // redirect all others to the site root
