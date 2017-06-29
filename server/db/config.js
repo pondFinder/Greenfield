@@ -34,6 +34,7 @@ db.knex.schema.createTableIfNotExists('users', function(users) {
 
 db.knex.schema.createTableIfNotExists('work_orders', function(orders) {
   orders.increments('id').primary();
+  orders.text('username');
   orders.text('notes', 'mediumtext');
   orders.text('job_info', 'mediumtext');
   orders.text('created_at', 'mediumtext');
