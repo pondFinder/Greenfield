@@ -4,12 +4,18 @@ angular.module('work-orders')
 .controller('WorkOrderFeedCtrl', function($scope, $http, dataHandler) {
   $scope.orders;
   this.currentOrder;
+
   this.show = false;
   this.expandOrder = function(order){
     dataHandler.orderInformation(order);
     this.show = !this.show;
-    console.log(dataHandler.orderData)
   }
+
+  this.toggle = function() {
+    this.show = !this.show;
+    console.log(this.show);
+  }
+  .bind(this);
   var app = this;
 
   this.getWorkOrders = function () {

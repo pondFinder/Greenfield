@@ -1,8 +1,8 @@
 <!-- Expanded full view of work order TODO: figure out where/how this renders on page in index.html -->
-<div class="panel panel-default">
-  <div class="panel-heading">
-    <h3><span class="label label-primary">Work Order #{{$ctrl.orderInformation.id}} - {{$ctrl.orderInformation.is_done}}</span></h3>
-    <span class="glyphicon glyphicon-remove" ng-click="$ctrl.close()"></span>
+<div class="panel panel-primary">
+  <div class="panel-heading text-center">
+    Work Order #{{$ctrl.orderInformation.id}} - {{$ctrl.orderInformation.is_done}}
+    <span class="glyphicon glyphicon-remove close-order" ng-click="$ctrl.toggle()"></span>
   </div>
   <div class="panel-body">
     <div class="row">
