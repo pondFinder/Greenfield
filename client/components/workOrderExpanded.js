@@ -7,6 +7,19 @@ angular.module('work-orders')
   this.orderID = this.orderInformation.id;
   // this.orderInformation.notes = "hello my name is andrew";
   this.statusString = this.orderInformation.is_done ? "Complete" : "In Progress";
+
+  //Update bg color of panel heading
+  //TODO: we should just call this.toggleStatus to replace these lines but it wouldn't work.
+  if (this.orderInformation.is_done) {
+    $('.expanded-panel').removeClass('panel-warning');
+    $('.expanded-panel').addClass('panel-success');
+  } else {
+    $('.expanded-panel').removeClass('panel-success');
+    $('.expanded-panel').addClass('panel-warning');
+  }
+
+
+
   var app = this;
   this.noteList = this.orderInformation.notes;
   this.testInformation;
@@ -25,13 +38,29 @@ angular.module('work-orders')
     this.updateWorkOrder({
       id: this.orderID,
       is_done: this.orderInformation.is_done
-    }, this.toggleStatusString)
+    }, this.toggleStatus);
+
+
   }
 
-  this.toggleStatusString = function() {
+  this.toggleStatus = function() {
+    //Update string in panel heading
     this.statusString = this.orderInformation.is_done ? "Complete" : "In Progress";
+
+    //Update bg color of panel heading
+    if (this.orderInformation.is_done) {
+      $('.expanded-panel').removeClass('panel-warning');
+      $('.expanded-panel').addClass('panel-success');
+    } else {
+      $('.expanded-panel').removeClass('panel-success');
+      $('.expanded-panel').addClass('panel-warning');
+    }
+
     app.getWorkOrders();
+    //Started to refactor to use getWorkOrder in app.js- need to call it here so that the summary view on the top of the page updates:
+    this.appGetWorkOrders();
   }.bind(this);
+
 
   this.renderMessages = function() {
     this.noteList = this.orderInformation.notes;
@@ -41,6 +70,10 @@ angular.module('work-orders')
   this.submitNote = function(e){
     if(e.key === 'Enter'){
       this.orderInformation.notes = this.orderInformation.notes + '\n' + this.newNote;
+
+      //reset the newNote model so the form empties after entering
+      this.newNote = '';
+
       this.updateWorkOrder({
         id: this.orderID,
         notes: this.orderInformation.notes
@@ -72,7 +105,8 @@ angular.module('work-orders')
 .component('workOrderExpanded', {
   bindings: {
     toggle: '<',
-    getWorkOrders: '<'
+    getWorkOrders: '<',
+    appGetWorkOrders: '<'
   },
   controller: 'ExpandedOrderCtrl',
   templateUrl: '../templates/workOrderExpanded.html'
