@@ -30,6 +30,7 @@ exports.createOrder = (req, res) => {
 };
 
 exports.updateOrder = (req, res) => {
+  console.log("inside updateOrder in api ", req.body);
   dbHelpers.updateOrder(req.body, (order) => {
     res.send(order);
   });
@@ -57,7 +58,9 @@ exports.getOrdersUsername = (req, res) => {
 };
 
 exports.deleteOrder = (req, res) => {
-  dbHelpers.deleteOrder(req.body, (order) => {
+  var id = req.params.id;
+  console.log("Inside deleteOrder", id)
+  dbHelpers.deleteOrder({id: id}, (order) => {
     res.send(order);
   });
 

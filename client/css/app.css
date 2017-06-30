@@ -13,15 +13,33 @@
   float: right;
   color: #ff4d4d;
   font-size: 1.5em;
+  cursor: pointer;
 }
 
-.btn-no-background {
-  border: none;
-  background: none;
-  color: #337ab7;
+.delete-order {
+  float: right;
+  color: #a3a3c2;
+  font-size: 1.5em;
 }
 
-.login-error {
-  color: red;
-  margin-left: 30px;
+.change-status-button{
+  cursor: pointer;
+}
+
+.heading {
+
+}
+
+.eachEntry {
+  cursor: pointer;
+}
+
+.delete-key {
+  background: red;
+  cursor: pointer;
+  color: white;
+}
+
+.delete-key:hover {
+  background: #b30000;
 }
