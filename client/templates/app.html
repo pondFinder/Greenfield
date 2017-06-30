@@ -15,7 +15,7 @@
     <div class="col-md-8">
 
       <!-- news-feed.html template file goes here -->
-        <news-feed />
+        <news-feed complete-work-orders="$ctrl.completeWorkOrders" in-progress-work-orders="$ctrl.inProgressWorkOrders"/>
 
     </div>
   </div>
@@ -23,7 +23,7 @@
   <div class="row">
     <div class="col-md-12">
       <!-- work-order-entry.html template used to place work-order entries here -->
-      <work-order-feed />
+      <work-order-feed app-get-work-orders="$ctrl.getWorkOrders"/>
       <!-- when a user clicks on one, it is replaced with a work-order-expanded.html view. -->
     </div>
   </div>
