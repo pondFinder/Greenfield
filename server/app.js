@@ -67,7 +67,7 @@ app.post('/user-signup', api.userSignUp); // creates an admin user, mvp doesn't 
 app.post('/user-signin', api.userSignIn); // user login end point
 app.post('/create-order', api.createOrder); // when a create order request is made
 app.put('/update-order', api.updateOrder); // when an order is updated
-app.delete('/delete-order', api.deleteOrder);// when an order is deleted
+app.delete('/delete-order/:id', api.deleteOrder);// when an order is deleted
 app.get('/get-orders', api.getOrders);
 app.get('/get-orders-selective/:isDone', api.getOrdersSelective);
 app.get('get-orders-username/:username', api.getOrdersUsername);

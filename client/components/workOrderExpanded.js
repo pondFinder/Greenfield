@@ -48,9 +48,9 @@ angular.module('work-orders')
     }
   }
 
-  this.deleteWorkOrder = function (data, cb) {
+  this.deleteWorkOrder = function (cb) {
 
-    $http.delete('/delete-order', data)
+    $http.delete('/delete-order/' + this.orderID)
     .then(function(res) {
       cb();
     });
@@ -62,9 +62,7 @@ angular.module('work-orders')
 
   this.deleteThisOrder = function() {
     if(confirm('Are you sure you want to delete this work order?')){
-      this.deleteWorkOrder({
-        id: this.orderID
-      }, this.doNothing)
+      this.deleteWorkOrder(this.doNothing)
     }else{
       console.log('it is not going to be deleted')
     }

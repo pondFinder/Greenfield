@@ -158,6 +158,7 @@ exports.updateOrder = function (queryObj, cb) {
 };
 
 exports.deleteOrder = function (queryObj, cb) {
+  console.log("inside dbQuery", queryObj);
   new WorkOrder(queryObj)
     .destroy({require: true})
     .then(function (model) {
