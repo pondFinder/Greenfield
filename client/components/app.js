@@ -3,6 +3,8 @@ angular.module('work-orders')
 .controller('AppCtrl', function($http) {
 
   var app = this;
+  app.completeWorkOrders = 0;
+  app.inProgressWorkOrders = 0;
 
   app.isContentHidden = true;
 
@@ -10,8 +12,24 @@ angular.module('work-orders')
     $http.get('/get-orders')
     .then(function(res) {
       app.workOrders = res.data;
+      var complete = 0;
+      var inProgress = 0;
+      app.workOrders.forEach( function (val,ind,arr) {
+        console.log('val in forEach', val);
+        if (val.is_done) {
+          complete++;
+        } else {
+          inProgress++;
+        }
+      });
+      app.completeWorkOrders = complete;
+      app.inProgressWorkOrders = inProgress;
     });
   };
+  //call immediately to get data on load
+  app.getWorkOrders();
+
+
 
   this.updateWorkOrder = function (form) {
     var reqBody = angular.copy(form);
