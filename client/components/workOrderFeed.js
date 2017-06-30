@@ -27,7 +27,7 @@ angular.module('work-orders')
       console.log(res.data);
     });
   }.bind(this);
-  this.getWorkOrders()
+  this.getWorkOrders();
 
   this.testFunc = function() {
     console.log("TESTTESTTESTTEST");

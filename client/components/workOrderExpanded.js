@@ -22,6 +22,7 @@ angular.module('work-orders')
 
   this.changeStatus = function() {
     this.orderInformation.is_done = !this.orderInformation.is_done;
+
     this.updateWorkOrder({
       id: this.orderID,
       is_done: this.orderInformation.is_done

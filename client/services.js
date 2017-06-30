@@ -3,7 +3,6 @@ angular.module('work-orders').
 
     this.setOrderInfo = function(order){
       this.orderData = order;
-
     }
 
   });
