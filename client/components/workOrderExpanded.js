@@ -41,6 +41,10 @@ angular.module('work-orders')
   this.submitNote = function(e){
     if(e.key === 'Enter'){
       this.orderInformation.notes = this.orderInformation.notes + '\n' + this.newNote;
+
+      //reset the newNote model so the form empties after entering
+      this.newNote = '';
+
       this.updateWorkOrder({
         id: this.orderID,
         notes: this.orderInformation.notes
