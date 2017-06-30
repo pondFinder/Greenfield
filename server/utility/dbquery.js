@@ -169,7 +169,7 @@ exports.deleteOrder = function (queryObj, cb) {
 };
 
 //uses same logic as updateOrder
-exports.updateUserPhoto = function (queryObj, cb) {
+exports.updateUser = function (queryObj, cb) {
   new user(queryObj)
   .save()
   .then(function (model) {

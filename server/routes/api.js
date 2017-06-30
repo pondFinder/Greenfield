@@ -64,7 +64,7 @@ exports.deleteOrder = (req, res) => {
 };
 
 exports.updateUser = (req, res) => {
-  dbHelpers.updateUserPhoto(req.body, (user) => {
+  dbHelpers.updateUser(req.body, (user) => {
     res.send(user);
   });
 };
