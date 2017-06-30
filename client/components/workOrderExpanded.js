@@ -5,7 +5,7 @@ angular.module('work-orders')
   this.newNote;
   this.info;
   this.orderID = this.orderInformation.id;
-  this.orderInformation.notes = "hello my name is andrew";
+  // this.orderInformation.notes = "hello my name is andrew";
   this.statusString = this.orderInformation.is_done ? "Complete" : "In Progress";
   var app = this;
   this.noteList = this.orderInformation.notes;
