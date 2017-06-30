@@ -1,14 +1,14 @@
 <!-- work order entry view template -->
 <div class="panel panel-primary">
   <div class="panel-heading text-center">
-    <h5>{{$ctrl.order.job_info}}</h5>
+    <h5>{{'Work Order #' + $ctrl.order.id + ': ' + $ctrl.order.job_info.slice(0,51) + '...'}}</h5>
   </div>
   <div class="panel-body">
     <div class="row">
 
       <!-- Work order image -->
       <div class="col-md-6">
-        <img src="{{$ctrl.order.photo}}" alt="broken pipe" width="180">
+        <img src="{{$ctrl.order.photo}}" alt="https://public.snapon.com/R_RRD/Objects_lg/images/OES18B.jpg" width="180">
       </div>
 
       <!-- Work order details -->
