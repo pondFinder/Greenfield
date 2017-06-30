@@ -70,7 +70,7 @@ app.put('/update-order', api.updateOrder); // when an order is updated
 app.delete('/delete-order', api.deleteOrder);// when an order is deleted
 app.get('/get-orders', api.getOrders);
 app.get('/get-orders-selective/:isDone', api.getOrdersSelective);
-
+app.get('get-orders-username/:username', api.getOrdersUsername);
 
 // app.get('*', api.root); // redirect all others to the site root
 
