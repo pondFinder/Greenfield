@@ -43,3 +43,7 @@
 .delete-key:hover {
   background: #b30000;
 }
+
+.invalid-fields {
+  color: red;
+}
