@@ -51,7 +51,7 @@
 
   <!-- Use Angular here to do an ng-repeat to put all work orders into the well -->
   <div ng-if="$ctrl.show">
-    <work-order-expanded toggle="$ctrl.toggle" get-work-orders="$ctrl.getWorkOrders"/>
+    <work-order-expanded toggle="$ctrl.toggle" get-work-orders="$ctrl.getWorkOrders" app-get-work-orders="$ctrl.appGetWorkOrders"/>
   </div>
     <div class="entry-feed-section">
       <work-order-entry class="eachEntry" ng-repeat="order in orders" order="order" ng-click="$ctrl.expandOrder(order)" />

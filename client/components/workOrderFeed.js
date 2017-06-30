@@ -97,6 +97,9 @@ angular.module('work-orders')
 })
 
 .component('workOrderFeed', {
+  bindings: {
+    appGetWorkOrders: '<'
+  },
   controller: 'WorkOrderFeedCtrl',
   templateUrl: '../templates/workOrderFeed.html'
 });

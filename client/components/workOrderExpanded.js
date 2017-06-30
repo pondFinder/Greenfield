@@ -38,7 +38,9 @@ angular.module('work-orders')
     this.updateWorkOrder({
       id: this.orderID,
       is_done: this.orderInformation.is_done
-    }, this.toggleStatus)
+    }, this.toggleStatus);
+
+
   }
 
   this.toggleStatus = function() {
@@ -55,6 +57,8 @@ angular.module('work-orders')
     }
 
     app.getWorkOrders();
+    //Started to refactor to use getWorkOrder in app.js- need to call it here so that the summary view on the top of the page updates:
+    this.appGetWorkOrders();
   }.bind(this);
 
 
@@ -101,7 +105,8 @@ angular.module('work-orders')
 .component('workOrderExpanded', {
   bindings: {
     toggle: '<',
-    getWorkOrders: '<'
+    getWorkOrders: '<',
+    appGetWorkOrders: '<'
   },
   controller: 'ExpandedOrderCtrl',
   templateUrl: '../templates/workOrderExpanded.html'
