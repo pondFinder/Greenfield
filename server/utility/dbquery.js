@@ -106,28 +106,30 @@ exports.getUser = function (queryObj, cb) {
   });
 */
 exports.addUser = function (queryObj, cb) {
-  new User(queryObj).save()
-    .then(function (model) {
-      cb(model);
-    });
+  new User(queryObj)
+  .save()
+  .then(function (model) {
+    cb(model);
+  });
 };
 
 //------Order queries -----------
 exports.getOrders = function (cb) {
   new WorkOrder()
-    .fetchAll()
-    .then(function (model) {
-      cb(model);
-    });
+  .query('orderBy', 'id', 'desc')
+  .fetchAll()
+  .then(function (model) {
+    cb(model);
+  });
 };
 
 exports.getOrdersSelective = function (queryObj, cb) {
   new WorkOrder(queryObj)
-    .where(queryObj)
-    .fetchAll()
-    .then(function (model) {
-      cb(model);
-    });
+  .where(queryObj)
+  .fetchAll()
+  .then(function (model) {
+    cb(model);
+  });
 };
 
 exports.getOrdersUsername = function (queryObj, cb) {
@@ -140,30 +142,39 @@ exports.getOrdersUsername = function (queryObj, cb) {
 };
 
 exports.createOrder = function (queryObj, cb) {
-  new WorkOrder(queryObj).save()
-    .then(function (model) {
-      cb(model);
-    });
+  new WorkOrder(queryObj)
+  .save()
+  .then(function (model) {
+    cb(model);
+  });
 };
 
 exports.updateOrder = function (queryObj, cb) {
   //same code as createOrder, but simply do not pass in
   // {id: } in the queryObj and it will be treated as an update
   //rather than a creation.
-  console.log("inside dbQuery", queryObj);
-  new WorkOrder(queryObj).save()
-    .then(function (model) {
-      cb(model);
-    });
+  new WorkOrder(queryObj)
+  .save()
+  .then(function (model) {
+    cb(model);
+  });
 };
 
 exports.deleteOrder = function (queryObj, cb) {
-  console.log("inside dbQuery", queryObj);
   new WorkOrder(queryObj)
     .destroy({require: true})
     .then(function (model) {
       cb(model);
     });
+};
+
+//uses same logic as updateOrder
+exports.updateUser = function (queryObj, cb) {
+  new user(queryObj)
+  .save()
+  .then(function (model) {
+    cb(model);
+  });
 };
 
 //------Company queries---------
