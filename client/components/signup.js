@@ -1,6 +1,11 @@
 angular.module('work-orders')
 
-.controller('UserSignupCtrl', function($scope, $http, auth) {
+.controller('UserSignupCtrl', function($scope, $http) {
+
+  this.showLogin = function () {
+    $scope.$parent.$ctrl.isHidden = true;
+  };
+
   this.createUser = function () {
     var userData = {
       first_name: $scope.firstName,
@@ -25,5 +30,5 @@ angular.module('work-orders')
 
 .component('signup', {
   controller: 'UserSignupCtrl',
-  templateUrl: '../templates/signup.html'
+  templateUrl: '../templates/signup.html',
 });

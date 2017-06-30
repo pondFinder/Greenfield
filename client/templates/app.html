@@ -3,11 +3,11 @@
   <nav class="navbar navbar-inverse">
     <navigation />
   </nav>
-  <div>
-    <signup />
+  <div ng-show="$ctrl.isContentHidden">
+    <login-signup />
   </div>
     <!-- User control section -->
-  <div>
+  <div ng-hide="$ctrl.isContentHidden">
   <div class="row">
     <!-- User Profile -->
     <div class="col-md-4"">
