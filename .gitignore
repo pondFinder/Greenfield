@@ -25,9 +25,6 @@
 npm-debug.log
 testem.log
 /typings
-/client/js
-/server/db/work_orders.sqlite
-
 
 # System Files
 .DS_Store
