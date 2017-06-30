@@ -19,7 +19,6 @@ angular.module('work-orders')
     });
   };
 
-
   this.changeStatus = function() {
     this.orderInformation.is_done = !this.orderInformation.is_done;
 
@@ -46,6 +45,28 @@ angular.module('work-orders')
         id: this.orderID,
         notes: this.orderInformation.notes
       }, this.renderMessages)
+    }
+  }
+
+  this.deleteWorkOrder = function (data, cb) {
+
+    $http.delete('/delete-order', data)
+    .then(function(res) {
+      cb();
+    });
+  };
+
+  this.doNothing = function(){
+    console.log('Deleted from database')
+  }.bind(this);
+
+  this.deleteThisOrder = function() {
+    if(confirm('Are you sure you want to delete this work order?')){
+      this.deleteWorkOrder({
+        id: this.orderID
+      }, this.doNothing)
+    }else{
+      console.log('it is not going to be deleted')
     }
   }
 })

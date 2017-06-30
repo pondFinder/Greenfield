@@ -16,10 +16,30 @@
   cursor: pointer;
 }
 
+.delete-order {
+  float: right;
+  color: #a3a3c2;
+  font-size: 1.5em;
+}
+
 .change-status-button{
   cursor: pointer;
 }
 
 .heading {
 
+}
+
+.eachEntry {
+  cursor: pointer;
+}
+
+.delete-key {
+  background: red;
+  cursor: pointer;
+  color: white;
+}
+
+.delete-key:hover {
+  background: #b30000;
 }

@@ -41,6 +41,6 @@
     <work-order-expanded toggle="$ctrl.toggle" get-work-orders="$ctrl.getWorkOrders"/>
   </div>
     <div class="entry-feed-section">
-      <work-order-entry ng-repeat="order in orders" order="order" ng-click="$ctrl.expandOrder(order)" />
+      <work-order-entry class="eachEntry" ng-repeat="order in orders" order="order" ng-click="$ctrl.expandOrder(order)" />
     </div>
 </div>
