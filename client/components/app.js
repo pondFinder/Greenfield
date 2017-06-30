@@ -6,6 +6,8 @@ angular.module('work-orders')
   app.completeWorkOrders = 0;
   app.inProgressWorkOrders = 0;
 
+  app.isContentHidden = true;
+
   this.getWorkOrders = function () {
     $http.get('/get-orders')
     .then(function(res) {
