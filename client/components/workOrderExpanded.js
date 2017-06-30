@@ -1,24 +1,21 @@
 angular.module('work-orders')
 
 .controller('ExpandedOrderCtrl', function($http, dataHandler) {
-  this.newNote;
-  this.noteToAdd;
-  this.info;
   this.orderInformation = dataHandler.orderData;
+  this.newNote;
+  this.info;
   this.orderID = this.orderInformation.id;
   this.orderInformation.notes = "hello my name is andrew";
   this.statusString = this.orderInformation.is_done ? "Complete" : "In Progress";
   var app = this;
+  this.noteList = this.orderInformation.notes;
   this.testInformation;
 
   this.updateWorkOrder = function (data, cb) {
-    //console.log("inside updateWorkOrder");
-    //console.log("LOOK HERE", app.getWorkOrders());
+
     $http.put('/update-order', data).
     then(function(res) {
-      //console.log('in updateWorkOrder', res);
       cb();
-      app.getWorkOrders();
     });
   };
 
@@ -33,18 +30,20 @@ angular.module('work-orders')
 
   this.toggleStatusString = function() {
     this.statusString = this.orderInformation.is_done ? "Complete" : "In Progress";
+    app.getWorkOrders();
   }.bind(this);
 
   this.renderMessages = function() {
-    this.orderInformation.notes = this.noteToAdd;
+    this.noteList = this.orderInformation.notes;
+    app.getWorkOrders();
   }.bind(this);
 
   this.submitNote = function(e){
     if(e.key === 'Enter'){
-      this.noteToAdd = this.orderInformation.notes + '\n' + this.newNote;
+      this.orderInformation.notes = this.orderInformation.notes + '\n' + this.newNote;
       this.updateWorkOrder({
         id: this.orderID,
-        notes: this.noteToAdd
+        notes: this.orderInformation.notes
       }, this.renderMessages)
     }
   }
