@@ -30,7 +30,7 @@
         </div>
 
         <!-- Button for creating new work orders -->
-        <button type="button" class="btn btn-lg btn-primary bt-create-work-order" ng-click="$ctrl.createWorkOrder($event)">Submit</button>
+        <button type="button" class="btn btn-lg btn-primary bt-create-work-order" ng-click="$ctrl.createWorkOrder($event); $ctrl.getWorkOrders()">Submit</button>
 
       </div>
     </div>
