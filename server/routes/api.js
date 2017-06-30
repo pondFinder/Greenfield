@@ -50,6 +50,13 @@ exports.getOrdersSelective = (req, res) => {
   });
 };
 
+exports.getOrdersUsername = (req, res) => {
+  var username = req.params.username;
+  dbHelpers.getOrdersUsername({username: username}, (orders) => {
+    res.send(orders);
+  });
+};
+
 exports.deleteOrder = (req, res) => {
   dbHelpers.deleteOrder(req.body, (order) => {
     res.send(order);
