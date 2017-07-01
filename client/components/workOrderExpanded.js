@@ -20,7 +20,7 @@ angular.module('work-orders')
 
 
 
-  var app = this;
+  var workOrderExpanded = this;
   this.noteList = this.orderInformation.notes;
   this.testInformation;
 
@@ -56,15 +56,13 @@ angular.module('work-orders')
       $('.expanded-panel').addClass('panel-warning');
     }
 
-    app.getWorkOrders();
+    workOrderExpanded.appGetWorkOrders();
     //Started to refactor to use getWorkOrder in app.js- need to call it here so that the summary view on the top of the page updates:
-    this.appGetWorkOrders();
   }.bind(this);
 
 
   this.renderMessages = function() {
     this.noteList = this.orderInformation.notes;
-    app.getWorkOrders();
   }.bind(this);
 
   this.submitNote = function(e){
