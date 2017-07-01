@@ -7,7 +7,8 @@ angular.module('work-orders')
 
 .component('workOrderEntry', {
   bindings: {
-    order: '<'
+    order: '<',
+    appGetWorkOrders: '<'
   },
   controller: 'WorkOrderEntryCtrl',
   templateUrl: '../templates/workOrderEntry.html'
