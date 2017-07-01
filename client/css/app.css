@@ -44,6 +44,18 @@
   background: #b30000;
 }
 
+.change-status-button:hover {
+  background: #74a9d8;
+}
+
 .invalid-fields {
+  color: red;
+}
+
+.optional-input {
+  color: green;
+}
+
+.required-input {
   color: red;
 }

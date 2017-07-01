@@ -11,7 +11,7 @@ angular.module('work-orders')
   //Used to show error text if invalid fields were entered
   this.invalidFields = false;
 
-  var app = this;
+  var workOrderFeed = this;
 
   this.expandOrder = function(order){
     dataHandler.setOrderInfo(order);
@@ -24,28 +24,19 @@ angular.module('work-orders')
   }
   .bind(this);
 
-
-  this.getWorkOrders = function () {
-    // console.log("in get work orders")
-    $http.get('/get-orders')
-    .then(function(res) {
-      app.workOrders = res.data;
-      $scope.orders = app.workOrders;
-      console.log(res.data);
-    });
-  }.bind(this);
-
-  //Get work orders on page load.
-  this.getWorkOrders();
-
   this.createWorkOrder = (e) => {
     // console.log('$ctrl model binds for work-order submit: ', this.woJobDetails, this.woEstimatedDuration, this.woClientName, this.woPhotoUrl);
 
     //Alert and return if all fields were not entered
-    if (!this.woJobDetails || !this.woEstimatedDuration || !this.woPhotoUrl || !this.woClientName) {
+    if (!this.woJobDetails || !this.woEstimatedDuration || !this.woClientName) {
       //set invalid fields boolean and immediately return.
       this.invalidFields = true;
       return;
+    }
+
+    //set a default image if one is not provided
+    if (!this.woPhotoUrl) {
+      this.woPhotoUrl = "https://images.pexels.com/photos/33343/building-joy-planning-plans.jpg?w=1260&h=750&auto=compress&cs=tinysrgb";
     }
 
     //reset invalid fields boolean
@@ -98,7 +89,8 @@ angular.module('work-orders')
 
 .component('workOrderFeed', {
   bindings: {
-    appGetWorkOrders: '<'
+    appGetWorkOrders: '<',
+    appWorkOrders: '<'
   },
   controller: 'WorkOrderFeedCtrl',
   templateUrl: '../templates/workOrderFeed.html'

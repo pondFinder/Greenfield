@@ -13,6 +13,8 @@ angular.module('work-orders')
     $http.get('/get-orders')
     .then(function(res) {
       app.workOrders = res.data;
+
+      //Create a count of complete and in progress orders
       var complete = 0;
       var inProgress = 0;
       app.workOrders.forEach( function (val,ind,arr) {
@@ -26,7 +28,7 @@ angular.module('work-orders')
       app.completeWorkOrders = complete;
       app.inProgressWorkOrders = inProgress;
     });
-  };
+  }.bind(this);
   //call immediately to get data on load
   app.getWorkOrders();
 
