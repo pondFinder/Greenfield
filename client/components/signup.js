@@ -24,13 +24,7 @@ angular.module('work-orders')
         console.log("success")
       }
     }.bind(this));
-
   }
-
-  // this.showLogIn = function () {
-  //   $scope.$parent.$ctrl.isLogInHidden = false;
-  //   $scope.$parent.$ctrl.isSignUpHidden = true;
-  // }
 })
 
 .component('signup', {
