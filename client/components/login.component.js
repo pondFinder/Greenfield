@@ -23,5 +23,5 @@ angular.module('work-orders')
     parent: '^^loginSignup'
   },
   controller: 'UserLoginCtrl',
-  templateUrl: '../templates/login.html',
+  templateUrl: '../templates/login.component.html',
 });

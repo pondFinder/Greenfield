@@ -6,7 +6,7 @@ angular.module('work-orders')
     // to do: get cur user data/ post to server and destroy session
     loginService.userLogout(userData, function (res) {
       if (res === true) {
-        this.parent.isContentHidden = true;
+        this.parent.isContentHidden();
       } else {
         console.log('error logging out');
       }
