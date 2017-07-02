@@ -171,8 +171,8 @@ exports.deleteOrder = function (queryObj, cb) {
 //update user data
 exports.updateUser = function (queryObj, cb) {
   new User(queryObj)
-  .where({username: queryObj.username})
-  .save(queryObj, {method:"update"})
+  // .where({username: queryObj.username})
+  .save()
   .then(function (model) {
     cb(model);
   });

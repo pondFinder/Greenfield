@@ -25,7 +25,7 @@ angular.module('work-orders')
     this.getCurUser();
     // this.userPhoto = usrPhoto;
     var userData = {
-      username: this.curUser.username,
+      id: this.curUser.id,
       photo: photo
     };
 
