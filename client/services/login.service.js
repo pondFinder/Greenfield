@@ -1,15 +1,29 @@
 angular.module('work-orders').
-  service('loginService', function($http) {
+  service('loginService', function($http, $window) {
+    // store current user in the current session
+    var self = this;
+
+    this.getCurrentUser = function () {
+      return JSON.parse($window.sessionStorage.getItem('currentUser') );
+    };
+
+    this.setCurrentUser = function (data) {
+      $window.sessionStorage.setItem('currentUser', JSON.stringify(data))
+    };
+
+    this.destroyCurrentUser = function () {
+      $window.sessionStorage.removeItem('currentUser');
+    };
+
     // create a new user when signing up
     this.postUser = function (userData, callback) {
       var reqBody = angular.copy(userData);
       $http.post('/user-signup', reqBody)
         .then(function(res) {
-          console.log(res.data)
           if (res.data.username !== undefined) {
-            console.log(res.data)
             //if (res.data.userExists === false) { // to do: check if user already exists
               if (res.data.username === userData.username && res.data.password === userData.password) {
+                self.setCurrentUser(res.data);
                 callback(res.data);
             } else {
               callback(false); // to do : change to res.data.userExists, if true ask to login
@@ -26,6 +40,7 @@ angular.module('work-orders').
         .then(function(res) {
           if (res.data.username !== undefined) {
             if (res.data.username === userData.username && res.data.password === userData.password) {
+              self.setCurrentUser(res.data);
               callback(res.data);
             }
           } else {
@@ -36,6 +51,7 @@ angular.module('work-orders').
     };
     // when user logs out, send session data to server. upon successful logout response, redirect user to signup page (to do)
     this.userLogout = function (userData, callback) {
+      self.destroyCurrentUser();
       callback(true);
     //   var reqBody = angular.copy(userData);
     //   $http.post('/user-logout', reqBody)
@@ -47,5 +63,22 @@ angular.module('work-orders').
     //         callback(false); // to do - callback(err)
     //       }
     //   });
+    };
+
+    this.uploadUserPhoto = function (userData, callback) {
+      var reqBody = angular.copy(userData);
+      $http.put('/update-user', reqBody)
+        .then(function(res) {
+          if (res.data.photo !== undefined) {
+            var currentUser = self.getCurrentUser();
+            currentUser.photo = res.data.photo;
+            self.setCurrentUser(currentUser);
+            console.log(self.getCurrentUser());
+            callback(res.data);
+          } else {
+            console.log('error uploading photo');
+            callback(false); // to do: change to res.data.someProperty- upload error etc
+          }
+      });
     };
 });

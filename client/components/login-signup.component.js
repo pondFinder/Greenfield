@@ -4,7 +4,7 @@ angular.module('work-orders')
   this.isHidden = false;
 
   this.showContent = function () {
-    this.parent.isContentHidden = false;
+    this.parent.isContentHidden();
   };
 })
 
@@ -13,5 +13,5 @@ angular.module('work-orders')
     parent: '^^app'
   },
   controller: 'LoginSignupCtrl',
-  templateUrl: '../templates/loginSignup.html',
+  templateUrl: '../templates/login-signup.component.html',
 });

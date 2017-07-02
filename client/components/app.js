@@ -1,13 +1,20 @@
 angular.module('work-orders')
 
-.controller('AppCtrl', function($http) {
+.controller('AppCtrl', function($http, loginService) {
 
   var app = this;
   app.completeWorkOrders = 0;
   app.inProgressWorkOrders = 0;
 
 // hides logged in content and only display signup/login
-  app.isContentHidden = true;
+  // app.isContentHidden = true;
+  app.isContentHidden = function () {
+    if (loginService.getCurrentUser() === null) {
+      return true;
+    } else {
+      return false;
+    }
+  };
 
   this.getWorkOrders = function () {
     $http.get('/get-orders')

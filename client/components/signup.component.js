@@ -12,6 +12,7 @@ angular.module('work-orders')
       last_name: $scope.lastName,
       username: $scope.userName,
       password: $scope.userPass,
+      photo: "assets/images/default-user-image.png", // sets a default photo for a user profile pic
       date: new Date()
     };
 
@@ -32,5 +33,5 @@ angular.module('work-orders')
     parent: '^^loginSignup'
   },
   controller: 'UserSignupCtrl',
-  templateUrl: '../templates/signup.html',
+  templateUrl: '../templates/signup.component.html',
 });
