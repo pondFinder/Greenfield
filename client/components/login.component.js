@@ -1,6 +1,10 @@
 angular.module('work-orders')
 
 .controller('UserLoginCtrl', function($scope, loginService) {
+  this.showSignup = function () {
+    this.parent.isHidden = false;
+  };
+
   this.resetInputFields = function () {
     $scope.form.$setPristine();
     $scope.userName = '';
