@@ -2,6 +2,7 @@ angular.module('work-orders')
 
 .controller('ExpandedOrderCtrl', function($http, dataHandler) {
   this.orderInformation = dataHandler.orderData;
+  this.orderNumber = dataHandler.index;
   this.newNote;
   this.info;
   this.orderID = this.orderInformation.id;

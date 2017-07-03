@@ -116,7 +116,7 @@ exports.addUser = function (queryObj, cb) {
 //------Order queries -----------
 exports.getOrders = function (cb) {
   new WorkOrder()
-  .query('orderBy', 'id', 'desc')
+  .query('orderBy', 'id', 'desc')  //Sort by descending order (not using this FN currently)
   .fetchAll()
   .then(function (model) {
     cb(model);

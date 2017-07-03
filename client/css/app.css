@@ -59,3 +59,7 @@
 .required-input {
   color: red;
 }
+
+.notes-panel {
+  white-space: pre-wrap;
+}

@@ -2,7 +2,7 @@
   <h3>Login</h3>
     <form name="form" ng-submit="$ctrl.logUser()">
       <div class="form-group">
-        <input type="email" name="username" id="username" class="form-control" ng-model="userName" placeholder="Username(your email)" required/>
+        <input type="email" name="username" id="username" class="form-control" ng-model="userName" placeholder="Username (your email)" required/>
       </div>
       <div class="form-group">
         <input type="text" name="password" id="password" class="form-control" ng-model="userPass" placeholder="Password" required/>
@@ -12,4 +12,5 @@
         <span class="error-text">{{ loginRes }}</span>
       </div>
     </form>
+    <span>New Account? <button class="btn-no-background" ng-click="$ctrl.showLogin()">Sign Up</button></span>
 </div>

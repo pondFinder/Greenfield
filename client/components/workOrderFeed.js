@@ -14,8 +14,8 @@ angular.module('work-orders')
 
   var workOrderFeed = this;
 
-  this.expandOrder = function(order){
-    dataHandler.setOrderInfo(order);
+  this.expandOrder = function(order, index){
+    dataHandler.setOrderInfo(order, index);
     this.show = !this.show;
   }
 
