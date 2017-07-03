@@ -17,7 +17,6 @@ angular.module('work-orders')
   this.expandOrder = function(order){
     dataHandler.setOrderInfo(order);
     this.show = !this.show;
-    console.log($scope.orders)
   }
 
   this.toggle = function() {
