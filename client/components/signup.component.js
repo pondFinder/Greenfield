@@ -7,6 +7,7 @@ angular.module('work-orders')
   };
 
   this.createUser = function () {
+    // this.destroyCurrentUser();
     var userData = {
       first_name: $scope.firstName,
       last_name: $scope.lastName,
@@ -22,6 +23,7 @@ angular.module('work-orders')
         console.log("error")
       } else {
         this.parent.showContent();
+        this.parent.showWorkOrders();
         console.log("success")
       }
     }.bind(this));
