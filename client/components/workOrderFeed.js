@@ -1,8 +1,7 @@
 angular.module('work-orders')
 
 
-.controller('WorkOrderFeedCtrl', function($scope, $http, dataHandler, loginService) {
-  $scope.orders;
+.controller('WorkOrderFeedCtrl', function($http, dataHandler, loginService) {
   this.currentOrder;
   var curUser = loginService.getCurrentUser();
 
@@ -25,9 +24,7 @@ angular.module('work-orders')
   .bind(this);
 
   this.createWorkOrder = (e) => {
-    // console.log('$ctrl model binds for work-order submit: ', this.woJobDetails, this.woEstimatedDuration, this.woClientName, this.woPhotoUrl);
-
-    //Alert and return if all fields were not entered
+    //Display message and return if all fields were not entered
     if (!this.woJobDetails || !this.woEstimatedDuration || !this.woClientName) {
       //set invalid fields boolean and immediately return.
       this.invalidFields = true;
@@ -35,6 +32,7 @@ angular.module('work-orders')
     }
 
     //set a default image if one is not provided
+    //TODO: store default image on server rather than using link
     if (!this.woPhotoUrl) {
       this.woPhotoUrl = "https://images.pexels.com/photos/33343/building-joy-planning-plans.jpg?w=1260&h=750&auto=compress&cs=tinysrgb";
     }
@@ -73,6 +71,7 @@ angular.module('work-orders')
       .then(function successCallback(res) {
         cb();
       }, function errorCallback(res) {
+        //Useful console log to see when there is an error.
         console.log('error creating new order!');
       });
   }.bind(this);
