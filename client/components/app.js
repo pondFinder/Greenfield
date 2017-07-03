@@ -17,8 +17,11 @@ angular.module('work-orders')
   };
 
   this.getWorkOrders = function () {
-    $http.get('/get-orders')
+    var curUser = loginService.getCurrentUser().username;
+    console.log(curUser);
+    $http.get('/get-orders-username/' + curUser)
     .then(function(res) {
+      console.log(res.data);
       app.workOrders = res.data;
 
       //Create a count of complete and in progress orders
@@ -37,7 +40,10 @@ angular.module('work-orders')
     });
   }.bind(this);
   //call immediately to get data on load
-  app.getWorkOrders();
+
+    // app.getWorkOrders();
+
+
 
 
 

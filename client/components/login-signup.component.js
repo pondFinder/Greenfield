@@ -6,6 +6,11 @@ angular.module('work-orders')
   this.showContent = function () {
     this.parent.isContentHidden();
   };
+
+  this.showWorkOrders = function () {
+    console.log('hey i was called')
+    this.parent.getWorkOrders();
+  };
 })
 
 .component('loginSignup', {

@@ -1,9 +1,10 @@
 angular.module('work-orders')
 
 
-.controller('WorkOrderFeedCtrl', function($scope, $http, dataHandler) {
+.controller('WorkOrderFeedCtrl', function($scope, $http, dataHandler, loginService) {
   $scope.orders;
   this.currentOrder;
+  var curUser = loginService.getCurrentUser();
 
   //Used to show the expanded work order view
   this.show = false;
@@ -48,6 +49,7 @@ angular.module('work-orders')
     var dateStr = currentDate.getFullYear() + '/' + currentDate.getMonth() + '/' + currentDate.getDate() + ' ' + currentDate.getHours() + ':' + currentDate.getMinutes() + ':' + currentDate.getSeconds();
 
     var queryObj = {
+      username: curUser.username,
       notes: '',
       job_info: this.woJobDetails,
       created_at: dateStr,

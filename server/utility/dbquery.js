@@ -133,6 +133,7 @@ exports.getOrdersSelective = function (queryObj, cb) {
 };
 
 exports.getOrdersUsername = function (queryObj, cb) {
+  console.log('this is from dbquery', queryObj)
   new WorkOrder(queryObj)
   .where(queryObj)
   .fetchAll()
