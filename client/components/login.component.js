@@ -1,6 +1,12 @@
 angular.module('work-orders')
 
 .controller('UserLoginCtrl', function($scope, loginService) {
+  this.resetInputFields = function () {
+    $scope.form.$setPristine();
+    $scope.userName = '';
+    $scope.userPass = '';
+  };
+
   this.logUser = function () {
     var userData = {
       'username': $scope.userName,
@@ -10,14 +16,15 @@ angular.module('work-orders')
     loginService.validateUser(userData, function (loginRes) {
       if (loginRes === false) {
         $scope.loginRes = "Invalid username/password. Please try again!";
+        this.resetInputFields();
       } else {
         this.parent.showContent();
         this.parent.showWorkOrders();
       }
     }.bind(this));
-    // console.log($scope.form)
     // $scope.form.$dirty = false;
-    $scope.form.$setUntouched();
+
+    // console.log($scope.form)
 
   }
 })
