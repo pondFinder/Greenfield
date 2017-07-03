@@ -12,8 +12,12 @@ angular.module('work-orders')
         $scope.loginRes = "Invalid username/password. Please try again!";
       } else {
         this.parent.showContent();
+        this.parent.showWorkOrders();
       }
     }.bind(this));
+    // console.log($scope.form)
+    // $scope.form.$dirty = false;
+    $scope.form.$setUntouched();
 
   }
 })

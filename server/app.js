@@ -70,7 +70,7 @@ app.put('/update-order', api.updateOrder); // when an order is updated
 app.delete('/delete-order/:id', api.deleteOrder);// when an order is deleted
 app.get('/get-orders', api.getOrders);
 app.get('/get-orders-selective/:isDone', api.getOrdersSelective);
-app.get('get-orders-username/:username', api.getOrdersUsername);
+app.get('/get-orders-username/:username', api.getOrdersUsername);
 app.put('/update-user', api.updateUser);//can update photo url or any other user data
 
 app.get('/all-users', api.getAll); //testing purposes only
