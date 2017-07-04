@@ -3,7 +3,7 @@
 
 
 
-  <!-- This section is a div to store the create new work order view.  It is hidden on page load and toggles when the create work order button is pressed. -->
+  <!-- This section is a div to store the create new work order view. -->
   <div class="create-work-order-form-section">
     <div class="panel panel-primary">
       <div class="panel-heading">
@@ -53,7 +53,7 @@
     </div>
   </div>
 
-  <!-- Use Angular here to do an ng-repeat to put all work orders into the well -->
+  <!-- Expanded view to show work order details.  TODO: make this show up where the mouse was clicked as popup instead of near the top of the page in a statically located DIV.  (If there are many work orders, you have to scroll up to view the detail view.  Not a great user experience.) -->
   <div ng-if="$ctrl.show">
     <work-order-expanded toggle="$ctrl.toggle"  app-get-work-orders="$ctrl.appGetWorkOrders" app-work-order="$ctrl.appWorkOrders"/>
   </div>
