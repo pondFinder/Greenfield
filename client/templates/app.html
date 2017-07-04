@@ -17,17 +17,17 @@
     <!-- User Controls -->
     <div class="col-md-8">
 
-      <!-- news-feed.html template file goes here -->
-        <news-feed complete-work-orders="$ctrl.completeWorkOrders" in-progress-work-orders="$ctrl.inProgressWorkOrders"/>
+      <!-- Summary view - shows number of complete and in progress work orders -->
+        <work-order-summary complete-work-orders="$ctrl.completeWorkOrders" in-progress-work-orders="$ctrl.inProgressWorkOrders"/>
 
     </div>
   </div>
   <!-- Work order feed -->
   <div class="row">
     <div class="col-md-12">
-      <!-- work-order-entry.html template used to place work-order entries here -->
+      <!-- work-order-feed houses the work-order-entry templates to show a list of work orders as well as the create new work order section and the toggleable expanded work order view -->
       <work-order-feed app-get-work-orders="$ctrl.getWorkOrders" app-work-orders="$ctrl.workOrders"/>
-      <!-- when a user clicks on one, it is replaced with a work-order-expanded.html view. -->
+
     </div>
   </div>
   </div>

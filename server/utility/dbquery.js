@@ -3,12 +3,6 @@ var dbInterface = require('../db/config');
 /* these functions are called by api.js and query the database.
 They send back JSON to the callback provided. */
 
-//get users
-
-//Create table models
-
-//TODO: handle model relatioships by writing relationship functions in models
-
 //user
 var User = dbInterface.db.Model.extend({
   tableName: 'users',
@@ -23,16 +17,6 @@ var User = dbInterface.db.Model.extend({
     return this.belongsToMany(WorkOrder);
   }
 
-});
-
-//company
-var Company = dbInterface.db.Model.extend({
-  tableName: 'companies',
-});
-
-//client
-var Client = dbInterface.db.Model.extend({
-  tableName: 'clients',
 });
 
 //work orders
@@ -56,10 +40,24 @@ var WorkOrder = dbInterface.db.Model.extend({
 
 });
 
-//work orders users join table-- not sure how/if we ue this here?
-var WorkOrdersUsers = dbInterface.db.Model.extend({
-  tableName: 'work_orders_users'
-});
+//Company - We did not end up using this table (add in future)
+
+// var Company = dbInterface.db.Model.extend({
+//   tableName: 'companies',
+// });
+
+//Client- We did not end up using this table (add in future)
+
+// var Client = dbInterface.db.Model.extend({
+//   tableName: 'clients',
+// });
+
+
+//Work Order Users Join table - did not use (add in future)
+
+// var WorkOrdersUsers = dbInterface.db.Model.extend({
+//   tableName: 'work_orders_users'
+// });
 
 //----------------------query functions------------------------
 
@@ -105,15 +103,10 @@ exports.getUser = function (queryObj, cb) {
     company_id: '5' --- Foreign Key
   });
 */
-exports.addUser = function (queryObj, cb) {
-  new User(queryObj)
-  .save()
-  .then(function (model) {
-    cb(model);
-  });
-};
+
 
 //------Order queries -----------
+
 exports.getOrders = function (cb) {
   new WorkOrder()
   .query('orderBy', 'id', 'desc')  //Sort by descending order (not using this FN currently)
@@ -122,6 +115,10 @@ exports.getOrders = function (cb) {
     cb(model);
   });
 };
+
+/*The two functions below- getOrdersSelective and getOrdersUsername, essentially do the same thing.  You could use getOrdersSelective to get orders based on username or any other database column, but our codebase uses getOrdersUsername.
+
+TODO: refactor to use getOrdersSelective and remove getOrdersUsername */
 
 exports.getOrdersSelective = function (queryObj, cb) {
   new WorkOrder(queryObj)
@@ -133,7 +130,6 @@ exports.getOrdersSelective = function (queryObj, cb) {
 };
 
 exports.getOrdersUsername = function (queryObj, cb) {
-  console.log('this is from dbquery', queryObj)
   new WorkOrder(queryObj)
   .where(queryObj)
   .fetchAll()
@@ -142,6 +138,8 @@ exports.getOrdersUsername = function (queryObj, cb) {
   });
 };
 
+//Create a new Work Order based on a query object.
+//If database schema changes, this function does not need to change.  Can still be used this way with different schema.
 exports.createOrder = function (queryObj, cb) {
   new WorkOrder(queryObj)
   .save()
@@ -169,6 +167,18 @@ exports.deleteOrder = function (queryObj, cb) {
     });
 };
 
+// ------------ User Queries ---------------
+
+//Creates new User Entry in User database.
+//If user table schema changes, this function does not need to change.  It can be used with any schema.
+exports.addUser = function (queryObj, cb) {
+  new User(queryObj)
+  .save()
+  .then(function (model) {
+    cb(model);
+  });
+};
+
 //update user data
 exports.updateUser = function (queryObj, cb) {
   new User(queryObj)
@@ -191,6 +201,8 @@ exports.getAll = function (queryObj, cb) {
 
 //------Company queries---------
 
+/* The below queries were not used in our project as we removed the company table from our Schema and our MVP goals.  If a company table were added in the future, these can be used.
+
 exports.getCompany = function (queryObj, cb) {
   new Company(queryObj)
     .fetch()
@@ -206,6 +218,8 @@ exports.addCompany = function(queryObj, cb) {
       cb(model);
     });
 };
+
+*/
 
 
 
