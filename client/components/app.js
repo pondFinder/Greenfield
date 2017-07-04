@@ -39,9 +39,11 @@ angular.module('work-orders')
     });
   }.bind(this);
 
- if ( loginService.getCurrentUser().username ) {
-  this.getWorkOrders();
- }
+  if(loginService.getCurrentUser() !== null) {
+    if ( loginService.getCurrentUser().username ) {
+      this.getWorkOrders();
+    }
+  }
 
 })
 
