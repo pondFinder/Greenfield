@@ -1,7 +1,7 @@
 angular.module('work-orders')
 
 .controller('UserProfileCtrl', function($scope, loginService) {
-  this.userPhoto = (loginService.getCurrentUser()).photo;
+  this.userPhoto = loginService.getCurrentUser().photo;
   this.userFullName = loginService.getCurrentUser().first_name + ' ' + loginService.getCurrentUser().last_name;
   this.userName = loginService.getCurrentUser().username;
 

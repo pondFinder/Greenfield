@@ -1,24 +1,30 @@
+// Child component of login-signup.component. Uses login-service.js, service
+
+/* It has controller methods
+    to reset input fields after a user tries to login and fails
+    to log a user, and show main content (work order/profile etc) to user.
+*/
+
 angular.module('work-orders')
 
 .controller('UserLoginCtrl', function($scope, loginService) {
-  this.showSignup = function () {
-    this.parent.isHidden = false;
-  };
 
-  this.resetInputFields = function () {
+  this.resetInputFields = function () { // reset input field when failed login attempt
     $scope.form.$setPristine();
     $scope.userName = '';
     $scope.userPass = '';
   };
 
-  this.logUser = function () {
-    var userData = {
+  this.logUser = function () { // log user in and show the logged in content
+    var userData = { // store data from input fields
       'username': $scope.userName,
       'password': $scope.userPass
     };
-
+    // validate the user
+    //    if login details are incorrect, show err text
+    //    else log user in by showing the work orders and profile stuff
     loginService.validateUser(userData, function (loginRes) {
-      if (loginRes === false) {
+      if (loginRes === false) { // to do - better error handling
         $scope.loginRes = "Invalid username/password. Please try again!";
         this.resetInputFields();
       } else {
@@ -26,10 +32,6 @@ angular.module('work-orders')
         this.parent.showWorkOrders();
       }
     }.bind(this));
-    // $scope.form.$dirty = false;
-
-    // console.log($scope.form)
-
   }
 })
 

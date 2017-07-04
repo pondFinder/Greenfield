@@ -1,13 +1,12 @@
+// Child component of login-signup.component. Uses login-service.js, service
+
+/* It has controller methods
+    to create a user, and log user in to show main content (work order/profile etc) to user.
+*/
+
 angular.module('work-orders')
-
 .controller('UserSignupCtrl', function($scope, loginService) {
-
-  this.showLogin = function () {
-    this.parent.isHidden = true;
-  };
-
   this.createUser = function () {
-    // this.destroyCurrentUser();
     var userData = {
       first_name: $scope.firstName,
       last_name: $scope.lastName,
@@ -27,9 +26,8 @@ angular.module('work-orders')
         console.log("success")
       }
     }.bind(this));
-  }
+  };
 })
-
 .component('signup', {
   require: {
     parent: '^^loginSignup'

@@ -1,8 +1,10 @@
+/*
+  service functions to be used by login and sign up components ( can be used elsewhere too)
+*/
 angular.module('work-orders').
   service('loginService', function($http, $window) {
-    // store current user in the current session
     var self = this;
-
+    // store current user in the current session
     this.getCurrentUser = function () {
       return JSON.parse($window.sessionStorage.getItem('currentUser') );
     };
@@ -73,7 +75,6 @@ angular.module('work-orders').
             var currentUser = self.getCurrentUser();
             currentUser.photo = res.data.photo;
             self.setCurrentUser(currentUser);
-            console.log(self.getCurrentUser());
             callback(res.data);
           } else {
             console.log('error uploading photo');
