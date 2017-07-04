@@ -88,8 +88,11 @@ angular.module('work-orders')
 })
 
 .component('workOrderFeed', {
+  require: {
+    parent: '^^app'
+  },
   bindings: {
-    appGetWorkOrders: '<',
+    appGetWorkOrders: '<', //**
     appWorkOrders: '<'
   },
   controller: 'WorkOrderFeedCtrl',

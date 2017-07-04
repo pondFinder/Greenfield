@@ -1,6 +1,6 @@
 var express = require('express');
 var bodyParser = require('body-parser');
-//var handleErrors = require('error-handler');
+//var handleErrors = require('error-handler'); // to do, implement error handling
 
 var api = require('./routes/api');
 var http = require('http');
@@ -8,56 +8,14 @@ var path = require('path');
 
 var app = module.exports = express();
 
+// Configuration
 
-/**
- * Configuration
- */
-
-// all environments
 app.set('port', 8080);
-// app.set('views', __dirname + '/views');
-// app.set('view engine', 'jade');
-// app.use(morgan('dev'));
-
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
+app.use(express.static('../client')); //serve static content from client
 
-app.use(express.static('../client'));
-
-//basic error handler fn
-// function errorHandler (req, res, err) {
-//     console.log(err);
-//     res.writeHead(500).send();
-// };
-
-
-
-// app.use(methodOverride());
-// app.use(express.static(path.join(__dirname, 'server')));
-
-// var env = process.env.NODE_ENV || 'development';
-
-// // development only
-// if (env === 'development') {
-//   app.use(express.errorHandler());
-// }
-
-// // production only
-// if (env === 'production') {
-//   // TODO
-// }
-
-
-/**
- * Routes
- */
-// JSON API
-
-// exports.root = (req, res) => {
-//   app.use(express.static('../client'))
-//   res.status(200).send( fileToServe.paths.root );
-// };
-
+//API routes
 
 app.get('/', function(req, res) {
   res.status(200).end();
@@ -75,19 +33,9 @@ app.put('/update-user', api.updateUser);//can update photo url or any other user
 
 app.get('/all-users', api.getAll); //testing purposes only
 
-// app.get('*', api.root); // redirect all others to the site root
-
-
-
-
-/**
- * Start Server
- */
- //log date to show at server restarts
-console.log(Date());
-
+console.log(Date()); // log date when server restarts
+// Start server
 http.createServer(app).listen(app.get('port'), function (req, res) {
   console.log('Express server listening on port ' + app.get('port'));
-  //add basic default error handling for all requests/ res
-  //handleErrors(req, res, errorHandler);
+//to do - error handling
 });

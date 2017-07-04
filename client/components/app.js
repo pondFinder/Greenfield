@@ -24,12 +24,10 @@ angular.module('work-orders')
     $http.get('/get-orders-username/' + curUser)
     .then(function(res) {
       app.workOrders = res.data;
-
       //Create a count of complete and in progress orders
       var complete = 0;
       var inProgress = 0;
       app.workOrders.forEach( function (val,ind,arr) {
-        console.log('val in forEach', val);
         if (val.is_done) {
           complete++;
         } else {
@@ -41,6 +39,9 @@ angular.module('work-orders')
     });
   }.bind(this);
 
+ if ( loginService.getCurrentUser().username ) {
+  this.getWorkOrders();
+ }
 
 })
 
