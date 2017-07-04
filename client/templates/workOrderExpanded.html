@@ -1,6 +1,9 @@
-<!-- Expanded full view of work order TODO: figure out where/how this renders on page in index.html -->
+<!-- Expanded view for each work order after the user clicks on the entry in the feed -->
 <div class="panel panel-success expanded-panel">
   <div class="panel-heading text-center heading">
+
+  <!-- Expanded view header -->
+
     Work Order #{{$ctrl.orderNumber}} - {{$ctrl.statusString}}
     <span class="glyphicon glyphicon-remove close-order" ng-click="$ctrl.toggle()"></span>
   </div>

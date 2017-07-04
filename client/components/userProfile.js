@@ -1,4 +1,3 @@
-//user profile
 angular.module('work-orders')
 
 .controller('UserProfileCtrl', function($scope, loginService) {
@@ -17,13 +16,14 @@ angular.module('work-orders')
     }
   };
 
+  //gets the current user from the loginService which holds all information related to that individual user. I.e work orders, email, photo...
   this.getCurUser = function () {
     this.curUser = loginService.getCurrentUser();
   };
 
   this.uploadUserPhoto = function (photo) {
     this.getCurUser();
-    // this.userPhoto = usrPhoto;
+
     var userData = {
       id: this.curUser.id,
       photo: photo

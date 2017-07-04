@@ -4,6 +4,7 @@ angular.module('work-orders')
 
 })
 
+//bindings come from workOrderFeed.js which is the parent to workOrderEntry.js and workOrderEntry.html
 .component('workOrderEntry', {
   bindings: {
     order: '<',
