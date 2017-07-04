@@ -42,7 +42,7 @@ angular.module('work-orders')
   }.bind(this);
 
 
-});
+})
 
 .component('app', {
   controller: 'AppCtrl',
