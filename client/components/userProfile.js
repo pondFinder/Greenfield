@@ -1,14 +1,15 @@
 angular.module('work-orders')
 
 .controller('UserProfileCtrl', function($scope, loginService) {
+  // get current user's photo, full name and username
   this.userPhoto = loginService.getCurrentUser().photo;
   this.userFullName = loginService.getCurrentUser().first_name + ' ' + loginService.getCurrentUser().last_name;
   this.userName = loginService.getCurrentUser().username;
 
   this.curUser;
-  this.isHidden = true;
+  this.isHidden = true; // is upload photo option hidden
 
-  this.toggleUploadPhoto = function () {
+  this.toggleUploadPhoto = function () { // toglle upload photo button
     if ( this.isHidden ) {
       this.isHidden = false;
     } else {
@@ -21,7 +22,7 @@ angular.module('work-orders')
     this.curUser = loginService.getCurrentUser();
   };
 
-  this.uploadUserPhoto = function (photo) {
+  this.uploadUserPhoto = function (photo) { // upload user photo
     this.getCurUser();
 
     var userData = {

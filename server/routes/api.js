@@ -5,13 +5,10 @@
 var fileToServe = require('../utility/paths');
 var dbHelpers = require('../utility/dbquery');
 
-exports.getAll = (req, res) => {
-
+exports.getAll = (req, res) => { // testing purpose only to get all users in db
   dbHelpers.getAll(req.body, (users) => {
     res.send(users);
   });
-
-
 };
 
 exports.userSignUp = (req, res) => {
