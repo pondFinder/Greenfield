@@ -1,4 +1,3 @@
-//add requirements for knex and bookshelf
 var app = require ('../app.js');
 var express = require('express');
 var path = require('path');
@@ -12,8 +11,11 @@ var knex = require('knex')({
 
 var db = require('bookshelf')(knex);
 
-//defaultTo may not be right for role
-//specified BLOB type (sql for photos) on photo
+//sqlite database is in gitignore because it creates merge hell
+
+//only small parts of this table are in use
+//username refers to a user's email, which we used as a unique identifier
+
 db.knex.schema.createTableIfNotExists('users', function(users) {
   users.increments('id').primary();
   users.string('username', 65);
@@ -29,7 +31,7 @@ db.knex.schema.createTableIfNotExists('users', function(users) {
   // users.foreign('company_id').references('company.id');
 })
   .then( (table) => {
-    console.log('Table exists: ', table);
+    console.log('user table exists: ', table);
   });
 
 db.knex.schema.createTableIfNotExists('work_orders', function(orders) {
@@ -46,9 +48,16 @@ db.knex.schema.createTableIfNotExists('work_orders', function(orders) {
   // orders.foreign('company_id').references('company.id');
 })
   .then( (table) => {
-    console.log('Table exists: ', table);
+    console.log('work_orders table exists: ', table);
   });
 
+
+//The following tables are not currently used in the app implementation.
+//However, if you choose to implement features that allow the app to be used by
+//more than one company at once, to reference clients for billing purposes, or
+//to allow an admin to hand work to individual users, they may come in handy.
+//We leave them, because delete is easier than re-create.
+//
 // db.knex.schema.createTableIfNotExists('clients', function(clients) {
 //   clients.increments('id').primary();
 //   clients.string('first_name', 25);
@@ -66,7 +75,6 @@ db.knex.schema.createTableIfNotExists('work_orders', function(orders) {
 //     console.log('Table exists: ', table);
 //   });
 
-//Is it ok to reference primary contact by id in users?
 // db.knex.schema.createTableIfNotExists('company', function(company) {
 //   company.increments('id').primary();
 //   company.integer('primary_contact');

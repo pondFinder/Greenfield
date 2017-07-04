@@ -1,4 +1,5 @@
 <!-- user profile template -->
+<!-- has a corresponding css file user_profile.css in the css folder -->
 <div class="panel panel-primary text-center">
   <div class="panel-heading">{{$ctrl.userFullName}}</div>
   <div class="panel-body">
@@ -13,15 +14,10 @@
       </div>
     </div>
 
+    <!-- basic information for each user -->
     <div class="row">
       <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
       {{$ctrl.userName}}
     </div>
-
-    <!-- <div class="row">
-      <span class="glyphicon glyphicon-phone" aria-hidden="true"></span>
-      1-800-351-1566
-    </div> -->
-
   </div>
 </div>
