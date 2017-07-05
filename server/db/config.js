@@ -1,11 +1,23 @@
 var app = require ('../app.js');
 var express = require('express');
 var path = require('path');
+
+if(process.env.DATABASE_URL) {
+  var connection = {
+    host: process.env.DATABASE_URL
+  }
+} else {
+  var connection = {
+    host : 'localhost',
+    user : 'root',
+    password : '',
+    database : 'taskdrafter'
+  };
+}
+
 var knex = require('knex')({
-  client: 'sqlite3',
-  connection: {
-    filename: path.join(__dirname, 'work_orders.sqlite')
-  },
+  client: 'pg',
+  connection: connection,
   useNullAsDefault: true
 });
 
