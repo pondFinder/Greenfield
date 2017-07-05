@@ -10,7 +10,7 @@ var app = module.exports = express();
 
 // Configuration
 
-app.set('port', 8080);
+app.set('port', process.env.PORT || 8080);
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 app.use(express.static('../client')); //serve static content from client
