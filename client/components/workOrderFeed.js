@@ -57,11 +57,10 @@ angular.module('work-orders')
     };
 
     this.sendNewOrder(queryObj, this.clearFields);
-
-
   };
 
   this.sendNewOrder = function (queryObj, cb) {
+    var that = this;
     //send HTTP POST to server to create new W.O.
     $http({
       method: 'POST',
@@ -69,6 +68,8 @@ angular.module('work-orders')
       data: queryObj
     })
       .then(function successCallback(res) {
+        //fixes refresh bug
+        that.appGetWorkOrders();
         cb();
       }, function errorCallback(res) {
         //Useful console log to see when there is an error.

@@ -47,8 +47,8 @@
 
 
         <!-- Button for creating new work orders -->
-        <button type="button" class="btn btn-lg btn-primary bt-create-work-order" data-dismiss="alert" ng-click="$ctrl.createWorkOrder($event); $ctrl.appGetWorkOrders()">Submit</button>
-
+        <button type="button" class="btn btn-lg btn-primary bt-create-work-order" data-dismiss="alert" ng-click="$ctrl.createWorkOrder($event);">Submit</button>
+        <!-- Removing ng-click="$ctrl.createWorkOrder($event); $ctrl.appGetWorkOrders()" and replacing with ng-click="$ctrl.createWorkOrder($event);" to fix loading bug -->
       </div>
     </div>
   </div>

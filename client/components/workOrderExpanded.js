@@ -84,8 +84,11 @@ angular.module('work-orders')
   }
 
   this.deleteWorkOrder = function (cb) {
+    var that = this;
     $http.delete('/delete-order/' + this.orderID)
     .then(function(res) {
+      //fix refresh bug
+      that.appGetWorkOrders();
       cb();
     });
   };

@@ -34,7 +34,8 @@
         </div>
 
         <!--    DELETE WORK ORDER    -->
-        <div class="panel delete-key" ng-click="$ctrl.deleteThisOrder(); $ctrl.toggle(); $ctrl.appGetWorkOrders()">
+        <div class="panel delete-key" ng-click="$ctrl.deleteThisOrder(); $ctrl.toggle();">
+          <!-- removed $ctrl.appGetWorkOrders() to fix refresh bug -->
           <div class="panel-heading text-center">
             <div class="glyphicon glyphicon-trash delete-order"></div>
           Delete Work Order
