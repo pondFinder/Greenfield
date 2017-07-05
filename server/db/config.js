@@ -3,9 +3,7 @@ var express = require('express');
 var path = require('path');
 
 if(process.env.DATABASE_URL) {
-  var connection = {
-    host: process.env.DATABASE_URL
-  }
+  var connection = process.env.DATABASE_URL;
 } else {
   var connection = {
     host : 'localhost',
