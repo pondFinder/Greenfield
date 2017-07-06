@@ -56,10 +56,12 @@ db.knex.schema.createTableIfNotExists('work_orders', function(orders) {
   // orders.integer('client_id');
   orders.string('client');
   orders.string('photo');
+  orders.integer('author_id');
+  orders.integer('worker_id');
   //foreign key author
-  orders.foreign('author_id').references('user.id');
+  orders.foreign('author_id').references('users.id');
   //foreign key worker
-  orders.foreign('worker_id').references('user.id');
+  orders.foreign('worker_id').references('users.id');
   // orders.foreign('company_id').references('company.id');
 })
   .then( (table) => {
