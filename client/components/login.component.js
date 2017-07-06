@@ -29,7 +29,7 @@ angular.module('work-orders')
         this.resetInputFields();
       } else {
         this.parent.showContent();
-        this.parent.showWorkOrders();
+        // this.parent.showWorkOrders();
       }
     }.bind(this));
   }

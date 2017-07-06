@@ -27,7 +27,8 @@ app.post('/create-order', api.createOrder); // when a create order request is ma
 app.put('/update-order', api.updateOrder); // when an order is updated
 app.delete('/delete-order/:id', api.deleteOrder);// when an order is deleted
 app.get('/get-orders', api.getOrders);
-app.get('/get-orders-selective/:isDone', api.getOrdersSelective);
+app.get('/get-completed', api.getCompleted);
+app.get('/get-my-created/:username', api.getMyCreated);
 app.get('/get-orders-username/:username', api.getOrdersUsername);
 app.put('/update-user', api.updateUser);//can update photo url or any other user data
 

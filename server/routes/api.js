@@ -46,9 +46,18 @@ exports.getOrders = (req, res) => {
   });
 };
 
-exports.getOrdersSelective = (req, res) => {
-  var isDone = (req.params.isDone === '1') ? 1 : 0;
-  dbHelpers.getOrdersSelective({is_done: isDone}, (orders) => {
+exports.getCompleted = (req, res) => {
+  // console.log(req.params);
+  // var isDone = (req.params.isDone === '1') ? 1 : 0;
+  dbHelpers.getOrdersSelective({is_done: true}, (orders) => {
+    res.send(orders);
+  });
+};
+
+exports.getMyCreated = (req, res) => {
+  var username = req.params.username;
+  console.log('this is from api', username, req.body)
+  dbHelpers.getOrdersUsername({username: username}, (orders) => {
     res.send(orders);
   });
 };
