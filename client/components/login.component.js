@@ -18,7 +18,8 @@ angular.module('work-orders')
   this.logUser = function () { // log user in and show the logged in content
     var userData = { // store data from input fields
       'username': $scope.userName,
-      'password': $scope.userPass
+      'password': $scope.userPass,
+      'phone': $scope.phone
     };
     // validate the user
     //    if login details are incorrect, show err text
