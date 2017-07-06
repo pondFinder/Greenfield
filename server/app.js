@@ -33,6 +33,12 @@ app.put('/update-user', api.updateUser);//can update photo url or any other user
 
 app.get('/all-users', api.getAll); //testing purposes only
 
+// SMS routes
+app.post('/sms', function(req, res) {
+  // send phone number and job status
+  
+})
+
 console.log(Date()); // log date when server restarts
 // Start server
 http.createServer(app).listen(app.get('port'), function (req, res) {

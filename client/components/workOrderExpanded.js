@@ -34,6 +34,13 @@ angular.module('work-orders')
     $http.put('/update-order', data).
     then(function(res) {
       cb();
+      return res;
+    }).
+    then(function(res) {
+      console.log('in second then for updateWorkOrder');
+      console.log('res', res);
+      $http.post('/sms', data)
+
     });
   };
 
