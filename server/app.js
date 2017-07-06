@@ -37,8 +37,10 @@ app.get('/all-users', api.getAll); //testing purposes only
 // SMS routes
 app.post('/sms', function(req, res) {
   // send phone number and job status
-  
-})
+  console.log('req', req);
+  res.send(req);
+  res.end();
+});
 
 console.log(Date()); // log date when server restarts
 // Start server

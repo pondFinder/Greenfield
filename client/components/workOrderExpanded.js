@@ -8,6 +8,8 @@ angular.module('work-orders')
   this.newNote;
   this.info;
   this.orderID = this.orderInformation.id;
+  this.username = loginService.getCurrentUser().username;
+  this.workerPhone = loginService.getCurrentUser().phone;
 
   //this.status string simply translates a 0 to In Progress and a 1 to Complete. 0 and 1 are booleans that come straigt from the database which signifies whether or not the work order is done
 
@@ -47,6 +49,8 @@ angular.module('work-orders')
   //changeStatus simply changes the status between 0 for false and 1 for true in the database. The 0 and 1 are then translated into english in this.statusString
 
   this.changeStatus = function() {
+    // our new Complete button (function is called when a user accepts
+    // a job)
     this.orderInformation.is_done = !this.orderInformation.is_done;
     this.updateWorkOrder({
       id: this.orderID,
@@ -90,24 +94,25 @@ angular.module('work-orders')
     }
   }
 
-  this.deleteWorkOrder = function (cb) {
-    var that = this;
-    $http.delete('/delete-order/' + this.orderID)
-    .then(function(res) {
-      //fix refresh bug
-      that.appGetWorkOrders();
-      cb();
-    });
+  this.acceptWorkOrder = function (cb) {
+    // var that = this;
+    // $http.delete('/delete-order/' + this.orderID)
+    // .then(function(res) {
+    //   //fix refresh bug
+    //   that.appGetWorkOrders();
+    //   cb();
+    // });
+
+    // new Accept Work Order
+    this.orderInformation.is_done = !this.orderInformation.is_done;
+    this.updateWorkOrder({
+      id: this.orderID,
+      workername: this.username,
+      workerphone: this.workerPhone
+    }, this.toggleStatus);
+
   };
 
-  this.deleteThisOrder = function() {
-    //shows an alert on the screen which asks the user to confirm they want to delete a work order from the database
-    if(confirm('Are you sure you want to delete this work order?')){
-      this.deleteWorkOrder(this.doNothing)
-    }else{
-      console.log('it is not going to be deleted')
-    }
-  }
 })
 
 //includes some bindings from workOrderFeed.js which is the parent to workOrderExpanded.js

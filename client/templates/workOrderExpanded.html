@@ -34,11 +34,11 @@
         </div>
 
         <!--    DELETE WORK ORDER    -->
-        <div class="panel delete-key" ng-click="$ctrl.deleteThisOrder(); $ctrl.toggle();">
+        <div class="panel delete-key" ng-click="$ctrl.acceptWorkOrder(); $ctrl.toggle();">
           <!-- removed $ctrl.appGetWorkOrders() to fix refresh bug -->
           <div class="panel-heading text-center">
             <div class="glyphicon glyphicon-trash delete-order"></div>
-          Delete Work Order
+          Accept Work Order
           </div>
         </div>
           <!--      JOB NOTES      -->
@@ -59,7 +59,7 @@
           <!-- Toggle status - Done and In Progress -->
           <div class="panel panel-primary">
             <div class="panel-heading text-center change-status-button" ng-click="$ctrl.changeStatus()">
-              Change Status
+              Complete
             </div>
           </div>
       </div>
