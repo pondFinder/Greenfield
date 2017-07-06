@@ -32,12 +32,12 @@ db.knex.schema.createTableIfNotExists('users', function(users) {
   users.string('password', 25);
   users.string('first_name', 25);
   users.string('last_name', 60);
-  users.string('role', 30).defaultTo('user');
+  //users.string('role', 30).defaultTo('user');
   users.dateTime('date');
   users.string('photo');
   users.string('phone', 15);
-  users.string('phone_alt', 15);
-  users.integer('company_id');
+  //users.string('phone_alt', 15);
+  //users.integer('company_id');
   // users.foreign('company_id').references('company.id');
 })
   .then( (table) => {
@@ -50,11 +50,18 @@ db.knex.schema.createTableIfNotExists('work_orders', function(orders) {
   orders.text('notes', 'mediumtext');
   orders.text('job_info', 'mediumtext');
   orders.text('created_at', 'mediumtext');
+  //Orders.boolean might be changed to an integer that relates to a completion status Completed, Pending, and Accepted.
   orders.boolean('is_done').defaultTo(false);
   orders.text('duration', 'mediumtext');
   // orders.integer('client_id');
   orders.string('client');
   orders.string('photo');
+  orders.integer('author_id');
+  orders.integer('worker_id');
+  //foreign key author
+  orders.foreign('author_id').references('users.id');
+  //foreign key worker
+  orders.foreign('worker_id').references('users.id');
   // orders.foreign('company_id').references('company.id');
 })
   .then( (table) => {
