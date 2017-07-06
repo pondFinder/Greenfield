@@ -94,6 +94,8 @@ angular.module('work-orders')
   },
   bindings: {
     appGetWorkOrders: '<', //**
+    appGetCompleted: '<',
+    appGetMyCreated: '<',
     appWorkOrders: '<'
   },
   controller: 'WorkOrderFeedCtrl',

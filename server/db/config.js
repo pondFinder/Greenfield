@@ -47,6 +47,9 @@ db.knex.schema.createTableIfNotExists('users', function(users) {
 db.knex.schema.createTableIfNotExists('work_orders', function(orders) {
   orders.increments('id').primary();
   orders.text('username');
+  orders.text('workername');
+  orders.string('userphone');
+  orders.string('workerphone');
   orders.text('notes', 'mediumtext');
   orders.text('job_info', 'mediumtext');
   orders.text('created_at', 'mediumtext');
@@ -56,12 +59,12 @@ db.knex.schema.createTableIfNotExists('work_orders', function(orders) {
   // orders.integer('client_id');
   orders.string('client');
   orders.string('photo');
-  orders.integer('author_id');
-  orders.integer('worker_id');
+  // orders.integer('author_id');
+  // orders.integer('worker_id');
   //foreign key author
-  orders.foreign('author_id').references('users.id');
-  //foreign key worker
-  orders.foreign('worker_id').references('users.id');
+  // orders.foreign('author_id').references('users.id');
+  // //foreign key worker
+  // orders.foreign('worker_id').references('users.id');
   // orders.foreign('company_id').references('company.id');
 })
   .then( (table) => {

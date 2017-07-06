@@ -22,7 +22,7 @@ angular.module('work-orders')
         console.log("error")
       } else {
         this.parent.showContent();
-        this.parent.showWorkOrders();
+        // this.parent.showWorkOrders();
         console.log("success")
       }
     }.bind(this));
