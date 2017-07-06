@@ -37,8 +37,8 @@ app.get('/all-users', api.getAll); //testing purposes only
 // SMS routes
 app.post('/sms', function(req, res) {
   // send phone number and job status
-  console.log('req', req);
-  res.send(req);
+  console.log('req.body', req.body);
+  res.send(req.body);
   res.end();
 });
 

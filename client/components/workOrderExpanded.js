@@ -1,6 +1,6 @@
 angular.module('work-orders')
 
-.controller('ExpandedOrderCtrl', function($http, dataHandler) {
+.controller('ExpandedOrderCtrl', function($http, dataHandler, loginService) {
   //this.orderInformation brings in all of the data from the dataHandler service in services.js. After a user clicks on entry in the feed it populates the service with the individual work order data which is then accessed in a multitude of places across the application
 
   this.orderInformation = dataHandler.orderData;
@@ -40,8 +40,8 @@ angular.module('work-orders')
     }).
     then(function(res) {
       console.log('in second then for updateWorkOrder');
-      console.log('res', res);
-      $http.post('/sms', data)
+      console.log('res.data', res.data);
+      $http.post('/sms', res.data)
 
     });
   };
