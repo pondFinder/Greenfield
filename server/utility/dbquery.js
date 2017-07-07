@@ -201,6 +201,17 @@ exports.getAll = function (queryObj, cb) {
   });
 };
 
+
+//------SMS-Related queries---------
+
+exports.getPhoneData = function(queryObj, cb) {
+  new WorkOrder(queryObj)
+    .fetch()
+    .then( function(model) {
+      cb(model);
+    });
+}
+
 //------Company queries---------
 
 /* The below queries were not used in our project as we removed the company table from our Schema and our MVP goals.  If a company table were added in the future, these can be used.
@@ -222,7 +233,3 @@ exports.addCompany = function(queryObj, cb) {
 };
 
 */
-
-
-
-
