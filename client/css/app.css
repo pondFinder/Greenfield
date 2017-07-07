@@ -27,9 +27,9 @@
 }
 
 /* Make cursor change on hover over change status button */
-.change-status-button{
+/*.change-status-button{
   cursor: pointer;
-}
+}*/
 
 /* Change cursor to a pointer on hover over work order entries in list */
 .eachEntry {
@@ -43,14 +43,20 @@
   color: white;
 }
 
-.delete-key:hover {
-  background: #b30000;
+.accept-key:hover {
+  background: #33cc33;
 }
 
 /* Style change status toggle button on expanded view */
-.change-status-button:hover {
-  background: #74a9d8;
+#done-button {
+  background: green;
+  cursor: pointer;
+  color: white;
 }
+#done-button:hover {
+  background: #33cc33;
+}
+
 
 /* This styles the text shown on "create new work order" when some of the required fields have not been entered */
 .invalid-fields {
