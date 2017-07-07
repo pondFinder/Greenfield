@@ -37,8 +37,8 @@
 }
 
 /* Style Delete Work Order button in expanded view */
-.delete-key {
-  background: red;
+.accept-key {
+  background: green;
   cursor: pointer;
   color: white;
 }

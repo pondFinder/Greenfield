@@ -7,9 +7,11 @@ angular.module('work-orders')
   this.orderNumber = dataHandler.index;
   this.newNote;
   this.info;
+  this.workername = this.orderInformation.workername;
   this.orderID = this.orderInformation.id;
   this.username = loginService.getCurrentUser().username;
   this.workerPhone = loginService.getCurrentUser().phone;
+  this.is_done = this.orderInformation.is_done;
 
   //this.status string simply translates a 0 to In Progress and a 1 to Complete. 0 and 1 are booleans that come straigt from the database which signifies whether or not the work order is done
 
@@ -51,6 +53,7 @@ angular.module('work-orders')
   this.changeStatus = function() {
     // our new Complete button (function is called when a user accepts
     // a job)
+
     this.orderInformation.is_done = !this.orderInformation.is_done;
     this.updateWorkOrder({
       id: this.orderID,
@@ -104,12 +107,14 @@ angular.module('work-orders')
     // });
 
     // new Accept Work Order
+    console.log(this.orderInformation);
     this.orderInformation.is_done = !this.orderInformation.is_done;
     this.updateWorkOrder({
       id: this.orderID,
       workername: this.username,
       workerphone: this.workerPhone
     }, this.toggleStatus);
+    console.log(this.orderInformation);
 
   };
 
