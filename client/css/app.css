@@ -36,7 +36,7 @@
   cursor: pointer;
 }
 
-/* Style Delete Work Order button in expanded view */
+/* Style Accept Work Order button in expanded view */
 .accept-key {
   background: green;
   cursor: pointer;
