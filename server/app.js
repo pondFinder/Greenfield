@@ -8,6 +8,8 @@ var path = require('path');
 
 var app = module.exports = express();
 
+var sms = require('./routes/send-sms');
+
 // Configuration
 
 app.set('port', process.env.PORT || 8080);
@@ -37,9 +39,11 @@ app.get('/all-users', api.getAll); //testing purposes only
 // SMS routes
 app.post('/sms', function(req, res) {
   // send phone number and job status
-  console.log('req.body', req.body);
-  res.send(req.body);
-  res.end();
+  // console.log('req.body', req.body);
+  sms.sms(req.body);
+
+  // res.send(req.body.id);
+  // res.end();
 });
 
 console.log(Date()); // log date when server restarts
