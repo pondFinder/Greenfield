@@ -57,7 +57,15 @@ exports.getCompleted = (req, res) => {
 exports.getMyCreated = (req, res) => {
   var username = req.params.username;
   console.log('this is from api', username, req.body)
-  dbHelpers.getOrdersUsername({username: username}, (orders) => {
+  dbHelpers.getOrdersSelective({username: username}, (orders) => {
+    res.send(orders);
+  });
+};
+
+exports.getMyInProgress = (req, res) => {
+  var username = req.params.username;
+  console.log('this is from api', username, req.body)
+  dbHelpers.getOrdersSelective({workername: username, is_done: false}, (orders) => {
     res.send(orders);
   });
 };
