@@ -1,8 +1,8 @@
 // Justine's Twilio Info
-var justineAccountSid = process.env.justineAccountSid;
-var justineAuthToken = process.env.justineAuthToken;
+var accountSid = process.env.accountSid;
+var authToken = process.env.authToken;
 
-var justineClient = require('twilio')(justineAccountSid, justineAuthToken);
+var justineClient = require('twilio')(accountSid, authToken);
 var dbHelpers = require('../utility/dbquery');
 
 exports.sms = function(phoneData) {
