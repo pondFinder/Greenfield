@@ -47,9 +47,9 @@ exports.sms = function(phoneData) {
 
 exports.message = function(messageData, cb) {
   //split message data to get back correct work order
-  var data = messageData.body;
-  console.log(data);
-  var msgDataArray = messageData.body.split('/');
+  var data = messageData;
+  console.log('RECIEVED DATA:', data);
+  var msgDataArray = data.Body.split('/');
   console.log(msgDataArray);
   dbHelpers.updateOrder({
     id: msgDataArray[0],
