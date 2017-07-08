@@ -105,16 +105,24 @@ angular.module('work-orders')
     //   that.appGetWorkOrders();
     //   cb();
     // });
-
+    var curUser = loginService.getCurrentUser().username;
+    // console.log('curUser', curUser);
+    var that = this;
+    $http.get('/get-user-info/' + curUser)
+      .then(function(res) {
+        console.log('res.data obj in acceptWorkOrder', res.data);
+        that.first_name = res.data.first_name;
+        that.last_name = res.data.last_name;
+      });
     // new Accept Work Order
-    console.log(this.orderInformation);
+    // console.log(this.orderInformation);
     this.orderInformation.is_done = !this.orderInformation.is_done;
     this.updateWorkOrder({
       id: this.orderID,
-      workername: this.username,
+      workername: this.first_name + ' ' + this.last_name,
       workerphone: this.workerPhone
     }, this.toggleStatus);
-    console.log(this.orderInformation);
+    // console.log(this.orderInformation);
 
   };
 

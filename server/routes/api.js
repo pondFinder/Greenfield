@@ -11,6 +11,12 @@ exports.getAll = (req, res) => { // testing purpose only to get all users in db
   });
 };
 
+exports.getUser = (req, res) => {
+  dbHelpers.getUser(req.body, (user) => {
+    res.send(user);
+  });
+}
+
 exports.userSignUp = (req, res) => {
   dbHelpers.addUser(req.body, (newUser) => {
     dbHelpers.getUser(req.body, (user) => {
@@ -90,6 +96,3 @@ exports.updateUser = (req, res) => {
     res.send(user);
   });
 };
-
-
-

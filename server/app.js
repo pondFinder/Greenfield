@@ -8,6 +8,8 @@ var path = require('path');
 
 var app = module.exports = express();
 
+var sms = require('./routes/send-sms');
+
 // Configuration
 
 app.set('port', process.env.PORT || 8080);
@@ -31,6 +33,10 @@ app.get('/get-completed', api.getCompleted);
 app.get('/get-my-created/:username', api.getMyCreated);
 app.get('/get-my-in-progress/:username', api.getMyInProgress);
 app.get('/get-orders-username/:username', api.getOrdersUsername);
+
+// new GET to get User data on Accept Work Order click
+app.get('/get-user-info/:username', api.getUser);
+
 app.put('/update-user', api.updateUser);//can update photo url or any other user data
 
 app.get('/all-users', api.getAll); //testing purposes only
@@ -38,9 +44,11 @@ app.get('/all-users', api.getAll); //testing purposes only
 // SMS routes
 app.post('/sms', function(req, res) {
   // send phone number and job status
-  console.log('req.body', req.body);
-  res.send(req.body);
-  res.end();
+  // console.log('req.body', req.body);
+  sms.sms(req.body);
+
+  // res.send(req.body.id);
+  // res.end();
 });
 
 console.log(Date()); // log date when server restarts
