@@ -1,9 +1,9 @@
 // Justine's Twilio Info
 var accountSid = process.env.accountSid;
 var authToken = process.env.authToken;
-var TwilioNumber = process.env.phoneNumber;
+var phoneNumber = process.env.phoneNumber;
 
-var Client = require('twilio')(accountSid, authToken);
+var client = require('twilio')(accountSid, authToken);
 var dbHelpers = require('../utility/dbquery');
 
 exports.sms = function(phoneData) {
@@ -13,10 +13,10 @@ exports.sms = function(phoneData) {
       // console.log('result in sms callback', result);
 
       // message to job accepter
-      Client.messages.create({
+      client.messages.create({
         to: result.attributes.workerphone,
         // from: result.attributes.userphone,
-        from: TwilioNumber,
+        from: phoneNumber,
         body: `You've accepted a job: ${result.attributes.job_info}`
       }, function(err, message) {
         if (err) {
@@ -28,10 +28,10 @@ exports.sms = function(phoneData) {
       });
 
       // message to job poster/creater
-      Client.messages.create({
+      client.messages.create({
         to: result.attributes.userphone,
         // from: result.attributes.userphone,
-        from: TwilioNumber,
+        from: phoneNumber,
         // Wrong data, but testing
         body: `${result.attributes.workername} has accepted your job!`
       }, function(err, message) {
