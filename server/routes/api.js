@@ -47,7 +47,7 @@ exports.updateOrder = (req, res) => {
 };
 
 exports.getOrders = (req, res) => {
-  dbHelpers.getOrders((orders) => {
+  dbHelpers.getOrdersSelective({workername: null}, (orders) => {
     res.send(orders);
   });
 };
@@ -69,9 +69,9 @@ exports.getMyCreated = (req, res) => {
 };
 
 exports.getMyInProgress = (req, res) => {
-  var username = req.params.username;
-  console.log('this is from api', username, req.body)
-  dbHelpers.getOrdersSelective({workername: username, is_done: false}, (orders) => {
+  var phone = req.params.phone;
+  console.log('this is from api', phone, req.body)
+  dbHelpers.getOrdersSelective({workerphone: phone, is_done: false}, (orders) => {
     res.send(orders);
   });
 };
