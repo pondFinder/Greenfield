@@ -32,6 +32,10 @@ app.get('/get-orders', api.getOrders);
 app.get('/get-completed', api.getCompleted);
 app.get('/get-my-created/:username', api.getMyCreated);
 app.get('/get-orders-username/:username', api.getOrdersUsername);
+
+// new GET to get User data on Accept Work Order click
+app.get('/get-user-info/:username', api.getUser);
+
 app.put('/update-user', api.updateUser);//can update photo url or any other user data
 
 app.get('/all-users', api.getAll); //testing purposes only

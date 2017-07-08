@@ -47,13 +47,14 @@ angular.module('work-orders')
 
     var queryObj = {
       username: curUser.username,
+      userphone: curUser.phone, // grab phone number from database
       notes: '',
       job_info: this.woJobDetails,
       created_at: dateStr,
       is_done: false,
       duration: this.woEstimatedDuration,
       client: this.woClientName, //make schema use string not ID (don't need clients table?)
-      photo: this.woPhotoUrl,
+      photo: this.woPhotoUrl
     };
 
     this.sendNewOrder(queryObj, this.clearFields);

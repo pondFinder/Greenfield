@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "start": "cd server && node app.js"
+    "start": "cd server && nodemon app.js"
   },
   "dependencies": {
     "body-parser": "^1.0.2",
