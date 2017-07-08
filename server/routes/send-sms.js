@@ -1,6 +1,7 @@
 // Justine's Twilio Info
 var AccountSid = process.env.accountSid;
 var AuthToken = process.env.authToken;
+var TwilioNumber = process.env.phoneNumber;
 
 console.log(AccountSid);
 console.log(AuthToken);
