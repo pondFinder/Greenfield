@@ -10,8 +10,7 @@ exports.sms = function(phoneData) {
   dbHelpers.getPhoneData({
     id: phoneData.id
   }, function(result) {
-      // console.log('result in sms callback', result);
-
+      console.log('result in sms callback', result);
       // message to job accepter
       client.messages.create({
         to: result.attributes.workerphone,
@@ -45,3 +44,8 @@ exports.sms = function(phoneData) {
   });
 
 }
+
+exports.sms = function(messageData, cb) {
+  console.log(messageData);
+  cb(null, messageData);
+};
