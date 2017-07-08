@@ -61,7 +61,7 @@ angular.module('work-orders')
   }.bind(this);
 
   this.getMyInProgress = function () {
-    var curUser = loginService.getCurrentUser().username;
+    var curUser = loginService.getCurrentUser().phone;
     $http.get('/get-my-in-progress/' + curUser)
     .then(function(res) {
       app.workOrders = res.data;
