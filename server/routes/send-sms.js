@@ -3,9 +3,6 @@ var accountSid = process.env.accountSid;
 var authToken = process.env.authToken;
 var TwilioNumber = process.env.phoneNumber;
 
-console.log(accountSid);
-console.log(authToken);
-
 var Client = require('twilio')(accountSid, authToken);
 var dbHelpers = require('../utility/dbquery');
 
