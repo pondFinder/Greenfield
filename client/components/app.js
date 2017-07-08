@@ -27,9 +27,9 @@ angular.module('work-orders')
       var complete = 0;
       var inProgress = 0;
       app.workOrders.forEach( function (val,ind,arr) {
-        if (val.is_done) {
+        if (val.is_done && val.workername === curUser) {
           complete++;
-        } else {
+        } else if (val.workername === curUser) {
           inProgress++;
         }
       });
@@ -45,21 +45,10 @@ angular.module('work-orders')
   }
 
   this.getCompleted = function () {
+    var curUser = loginService.getCurrentUser().username;
     $http.get('/get-completed')
     .then(function(res) {
       app.workOrders = res.data;
-      //Create a count of complete and in progress orders
-      var complete = 0;
-      var inProgress = 0;
-      app.workOrders.forEach( function (val,ind,arr) {
-        if (val.is_done) {
-          complete++;
-        } else {
-          inProgress++;
-        }
-      });
-      app.completeWorkOrders = complete;
-      app.inProgressWorkOrders = inProgress;
     });
   }.bind(this);
 
@@ -68,18 +57,14 @@ angular.module('work-orders')
     $http.get('/get-my-created/' + curUser)
     .then(function(res) {
       app.workOrders = res.data;
-      //Create a count of complete and in progress orders
-      var complete = 0;
-      var inProgress = 0;
-      app.workOrders.forEach( function (val,ind,arr) {
-        if (val.is_done) {
-          complete++;
-        } else {
-          inProgress++;
-        }
-      });
-      app.completeWorkOrders = complete;
-      app.inProgressWorkOrders = inProgress;
+    });
+  }.bind(this);
+
+  this.getMyInProgress = function () {
+    var curUser = loginService.getCurrentUser().username;
+    $http.get('/get-my-in-progress/' + curUser)
+    .then(function(res) {
+      app.workOrders = res.data;
     });
   }.bind(this);
 

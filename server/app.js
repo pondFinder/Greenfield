@@ -31,6 +31,7 @@ app.delete('/delete-order/:id', api.deleteOrder);// when an order is deleted
 app.get('/get-orders', api.getOrders);
 app.get('/get-completed', api.getCompleted);
 app.get('/get-my-created/:username', api.getMyCreated);
+app.get('/get-my-in-progress/:username', api.getMyInProgress);
 app.get('/get-orders-username/:username', api.getOrdersUsername);
 
 // new GET to get User data on Accept Work Order click

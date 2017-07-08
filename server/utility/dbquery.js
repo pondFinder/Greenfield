@@ -122,6 +122,7 @@ TODO: refactor to use getOrdersSelective and remove getOrdersUsername */
 
 exports.getOrdersSelective = function (queryObj, cb) {
   new WorkOrder(queryObj)
+  .query('orderBy', 'id', 'desc')
   .where(queryObj)
   .fetchAll()
   .then(function (model) {
@@ -131,6 +132,7 @@ exports.getOrdersSelective = function (queryObj, cb) {
 
 exports.getOrdersUsername = function (queryObj, cb) {
   new WorkOrder(queryObj)
+  .query('orderBy', 'id', 'desc')
   .where(queryObj)
   .fetchAll()
   .then(function (model) {
