@@ -45,7 +45,7 @@ exports.sms = function(phoneData) {
 
 }
 
-exports.sms = function(messageData, cb) {
+exports.message = function(messageData, cb) {
   console.log(messageData);
   cb(null, messageData);
 };
