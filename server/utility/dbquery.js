@@ -204,7 +204,7 @@ exports.getAll = function (queryObj, cb) {
 
 //------SMS-Related queries---------
 
-exports.getPhoneData = function(queryObj, cb) {
+exports.getWorkOrderData = function(queryObj, cb) {
   new WorkOrder(queryObj)
     .fetch()
     .then( function(model) {
