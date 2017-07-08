@@ -7,7 +7,7 @@ var client = require('twilio')(accountSid, authToken);
 var dbHelpers = require('../utility/dbquery');
 
 exports.sms = function(phoneData) {
-  dbHelpers.getPhoneData({
+  dbHelpers.getWorkOrderData({
     id: phoneData.id
   }, function(result) {
       console.log('result in sms callback', result);
@@ -46,6 +46,39 @@ exports.sms = function(phoneData) {
 }
 
 exports.message = function(messageData, cb) {
-  console.log(messageData);
-  cb(null, messageData);
+  //split message data to get back correct work order
+  var data = messageData.body;
+  console.log(data);
+  var msgDataArray = messageData.body.split('/');
+  console.log(msgDataArray);
+  dbHelpers.updateOrder({
+    id: msgDataArray[0],
+    notes: msgDataArray[1] + '\n',
+    is_done: true
+  }, function(model) {
+
+    dbHelpers.getWorkOrderData({
+      id: msgDataArray[0]
+    }, function(modelData){
+      sendMessage(modelData.attributes);
+      cb(null, modelData.attributes); 
+    });
+  });
 };
+
+var sendMessage = function(workOrderInfo) {
+  client.messages.create({
+    to: workOrderInfo.userphone,
+      // from: result.attributes.userphone,
+    from: phoneNumber,
+      // Wrong data, but testing
+    body: `${workOrderInfo.workername} has completed your job! Info: ${workOrderInfo.job_info} (${workOrderInfo.id}) Notes: ${workOrderInfo.notes}`
+    }, function(err, message) {
+      if (err) {
+        console.error(err);
+      } else {
+        // console.log('message object', message);
+        console.log(message.sid);
+      }
+    });
+}
