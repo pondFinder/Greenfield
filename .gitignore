@@ -30,4 +30,3 @@ testem.log
 .DS_Store
 Thumbs.db
 /server/db/work_orders.sqlite
-/server/routes/send-sms.js
