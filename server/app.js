@@ -58,7 +58,13 @@ app.post('/message', function(req, res) {
     if(err) {
       console.log(err);
     } else {
-      res.send('Work order ${data.number} was successfully closed.');
+      res.send(`
+      <Response>
+        <Message>
+          Work Order: ${data.job_info} (${data.id}) was successfully closed.
+        </Message>
+      </Response>
+      `);
     }
   });
 });
