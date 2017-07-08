@@ -51,9 +51,21 @@ app.post('/sms', function(req, res) {
   // res.end();
 });
 
+app.post('/message', function(req, res) {
+  console.log(req.body);
+  sms.message(req.body, function(err, data) {
+    if(err) {
+      console.log(err);
+    } else {
+      res.send('Work order ${data.number} was successfully closed.');
+    }
+  });
+});
+
 console.log(Date()); // log date when server restarts
 // Start server
 http.createServer(app).listen(app.get('port'), function (req, res) {
   console.log('Express server listening on port ' + app.get('port'));
 //to do - error handling
 });
+;
