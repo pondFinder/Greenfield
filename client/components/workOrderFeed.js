@@ -95,6 +95,7 @@ angular.module('work-orders')
   },
   bindings: {
     appGetWorkOrders: '<', //**
+    appGetUnclaimed: '<',
     appGetCompleted: '<',
     appGetMyCreated: '<',
     appGetMyInProgress: '<',

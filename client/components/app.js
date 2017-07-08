@@ -20,6 +20,8 @@ angular.module('work-orders')
   //in any way.
   this.getWorkOrders = function () {
     var curUser = loginService.getCurrentUser().username;
+    var first = loginService.getCurrentUser().first_name;
+    var last = loginService.getCurrentUser().last_name;
     $http.get('/get-orders')
     .then(function(res) {
       app.workOrders = res.data;
@@ -27,9 +29,9 @@ angular.module('work-orders')
       var complete = 0;
       var inProgress = 0;
       app.workOrders.forEach( function (val,ind,arr) {
-        if (val.is_done && val.workername === curUser) {
+        if (val.is_done && val.workername === first + ' ' + last) {
           complete++;
-        } else if (val.workername === curUser) {
+        } else if (val.workername === first + ' ' + last) {
           inProgress++;
         }
       });
@@ -44,9 +46,17 @@ angular.module('work-orders')
     }
   }
 
-  this.getCompleted = function () {
+  this.getUnclaimed = function () {
     var curUser = loginService.getCurrentUser().username;
-    $http.get('/get-completed')
+    $http.get('/get-unclaimed')
+    .then(function(res) {
+      app.workOrders = res.data;
+    });
+  }.bind(this);
+
+  this.getCompleted = function () {
+    var curUser = loginService.getCurrentUser().phone;
+    $http.get('/get-completed/' + curUser)
     .then(function(res) {
       app.workOrders = res.data;
     });
