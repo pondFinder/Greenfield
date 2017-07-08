@@ -1,6 +1,6 @@
 // Justine's Twilio Info
-var justineAccountSid = process.env.accountSid;
-var justineAuthToken = process.env.authToken;
+var justineAccountSid = process.env.justineAccountSid;
+var justineAuthToken = process.env.justineAuthToken;
 
 var justineClient = require('twilio')(justineAccountSid, justineAuthToken);
 var dbHelpers = require('../utility/dbquery');
