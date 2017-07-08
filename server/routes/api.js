@@ -53,14 +53,16 @@ exports.getOrders = (req, res) => {
 };
 
 exports.getUnclaimed = (req, res) => {
-  dbHelpers.getOrdersSelective({is_done: false}, (orders) => {
+  dbHelpers.getOrdersSelective({workername: null}, (orders) => {
     res.send(orders);
   });
 };
 exports.getCompleted = (req, res) => {
   // console.log(req.params);
   // var isDone = (req.params.isDone === '1') ? 1 : 0;
-  dbHelpers.getOrdersSelective({is_done: true}, (orders) => {
+  var phone = req.params.phone;
+  console.log('this is from api', phone, req.body)
+  dbHelpers.getOrdersSelective({workerphone: phone, is_done: true}, (orders) => {
     res.send(orders);
   });
 };

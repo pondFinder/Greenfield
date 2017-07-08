@@ -53,8 +53,8 @@ angular.module('work-orders')
   }.bind(this);
 
   this.getCompleted = function () {
-    var curUser = loginService.getCurrentUser().username;
-    $http.get('/get-completed')
+    var curUser = loginService.getCurrentUser().phone;
+    $http.get('/get-completed/' + curUser)
     .then(function(res) {
       app.workOrders = res.data;
     });
