@@ -47,11 +47,16 @@ exports.updateOrder = (req, res) => {
 };
 
 exports.getOrders = (req, res) => {
-  dbHelpers.getOrdersSelective({workername: null}, (orders) => {
+  dbHelpers.getOrders((orders) => {
     res.send(orders);
   });
 };
 
+exports.getUnclaimed = (req, res) => {
+  dbHelpers.getOrdersSelective({is_done: false}, (orders) => {
+    res.send(orders);
+  });
+};
 exports.getCompleted = (req, res) => {
   // console.log(req.params);
   // var isDone = (req.params.isDone === '1') ? 1 : 0;

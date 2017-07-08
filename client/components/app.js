@@ -44,6 +44,14 @@ angular.module('work-orders')
     }
   }
 
+  this.getUnclaimed = function () {
+    var curUser = loginService.getCurrentUser().username;
+    $http.get('/get-unclaimed')
+    .then(function(res) {
+      app.workOrders = res.data;
+    });
+  }.bind(this);
+
   this.getCompleted = function () {
     var curUser = loginService.getCurrentUser().username;
     $http.get('/get-completed')
