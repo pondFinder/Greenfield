@@ -2,6 +2,9 @@
 var justineAccountSid = process.env.accountSid;
 var justineAuthToken = process.env.authToken;
 
+console.log(justineAccountSid);
+console.log(justineAuthToken);
+
 var justineClient = require('twilio')(justineAccountSid, justineAuthToken);
 var dbHelpers = require('../utility/dbquery');
 
