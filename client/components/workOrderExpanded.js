@@ -41,8 +41,8 @@ angular.module('work-orders')
       return res;
     }).
     then(function(res) {
-      console.log('in second then for updateWorkOrder');
-      console.log('res.data', res.data);
+      // console.log('in second then for updateWorkOrder');
+      // console.log('res.data', res.data);
       $http.post('/sms', res.data)
 
     });
