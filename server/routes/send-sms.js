@@ -1,7 +1,7 @@
 // Justine's Twilio Info
-var accountSid = process.env.accountSid || 'ACbd22420af5931bc35b903c1e55be8846';
-var authToken = process.env.authToken || 'cecc4cc65213e24c96657e39e3fa92a3';
-var TwilioNumber = process.env.phoneNumber || '9085214551';
+var accountSid = process.env.accountSid;
+var authToken = process.env.authToken;
+var TwilioNumber = process.env.phoneNumber;
 
 console.log(accountSid);
 console.log(authToken);
