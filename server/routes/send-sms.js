@@ -16,7 +16,7 @@ exports.sms = function(phoneData) {
         to: result.attributes.workerphone,
         // from: result.attributes.userphone,
         from: phoneNumber,
-        body: `You've accepted a job: ${result.attributes.job_info}`
+        body: `You've accepted a job:/n${result.attributes.client}/n${result.attributes.job_info}/n${result.attributes.duration} /n TO COMPLETE ORDER, REPLY WITH: ${result.attributes.id}/<any job or work notes>`
       }, function(err, message) {
         if (err) {
           console.error(err);
@@ -32,7 +32,7 @@ exports.sms = function(phoneData) {
         // from: result.attributes.userphone,
         from: phoneNumber,
         // Wrong data, but testing
-        body: `${result.attributes.workername} has accepted your job!`
+        body: `${result.attributes.workername} has accepted your job, ${result.attributes.id}:${result.attributes.job_info}`
       }, function(err, message) {
         if (err) {
           console.error(err);
