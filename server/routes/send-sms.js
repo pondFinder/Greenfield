@@ -16,7 +16,7 @@ exports.sms = function(phoneData) {
         to: result.attributes.workerphone,
         // from: result.attributes.userphone,
         from: phoneNumber,
-        body: `You've accepted a job:\n${result.attributes.client}\n${result.attributes.job_info}\n${result.attributes.duration} \n TO COMPLETE ORDER, REPLY WITH: ${result.attributes.id}/<any job or work notes>`
+        body: `\n\nYou've accepted a job:\nClient: ${result.attributes.client}\nJob Details: ${result.attributes.job_info}\nBillable Hrs: ${result.attributes.duration}\nTO COMPLETE ORDER, REPLY WITH:\n${result.attributes.id}/<any job or work notes>`
       }, function(err, message) {
         if (err) {
           console.error(err);
@@ -32,7 +32,7 @@ exports.sms = function(phoneData) {
         // from: result.attributes.userphone,
         from: phoneNumber,
         // Wrong data, but testing
-        body: `${result.attributes.workername} has accepted your job, ${result.attributes.id}:${result.attributes.job_info}`
+        body: `\n\n${result.attributes.workername} has accepted your job, ${result.attributes.id}:${result.attributes.job_info}`
       }, function(err, message) {
         if (err) {
           console.error(err);
@@ -72,7 +72,7 @@ var sendMessage = function(workOrderInfo) {
       // from: result.attributes.userphone,
     from: phoneNumber,
       // Wrong data, but testing
-    body: `${workOrderInfo.workername} has completed your job! Info: ${workOrderInfo.job_info} (${workOrderInfo.id}) Notes: ${workOrderInfo.notes}`
+    body: `\n\n${workOrderInfo.workername} has completed your job! Info: ${workOrderInfo.job_info} (${workOrderInfo.id}) Notes: ${workOrderInfo.notes}`
     }, function(err, message) {
       if (err) {
         console.error(err);

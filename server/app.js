@@ -61,7 +61,7 @@ app.post('/message', function(req, res) {
       res.send(`
       <Response>
         <Message>
-          Work Order: ${data.job_info} (${data.id}) was successfully closed.
+          \n\nWork Order: ${data.job_info} (Order#: ${data.id}) was successfully closed.
         </Message>
       </Response>
       `);
