@@ -72,7 +72,7 @@ var sendMessage = function(workOrderInfo) {
       // from: result.attributes.userphone,
     from: phoneNumber,
       // Wrong data, but testing
-    body: `-\n\n${workOrderInfo.workername} has completed your job! Info: ${workOrderInfo.job_info} (${workOrderInfo.id}) Notes: ${workOrderInfo.notes}`
+    body: `-\n\n${workOrderInfo.workername} has completed your job!\nInfo: ${workOrderInfo.job_info} (${workOrderInfo.id})\nNotes: ${workOrderInfo.notes}`
     }, function(err, message) {
       if (err) {
         console.error(err);
