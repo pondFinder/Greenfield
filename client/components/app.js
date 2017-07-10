@@ -63,7 +63,7 @@ angular.module('work-orders')
   }.bind(this);
 
   this.getMyCreated = function () {
-    var curUser = loginService.getCurrentUser().username;
+    var curUser = loginService.getCurrentUser().first_name + ' ' + loginService.getCurrentUser().last_name;
     $http.get('/get-my-created/' + curUser)
     .then(function(res) {
       app.workOrders = res.data;

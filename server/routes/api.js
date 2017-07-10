@@ -68,7 +68,7 @@ exports.getCompleted = (req, res) => {
 };
 
 exports.getMyCreated = (req, res) => {
-  var username = req.params.username;
+  var username = req.params.userName;
   console.log('this is from api', username, req.body)
   dbHelpers.getOrdersSelective({username: username}, (orders) => {
     res.send(orders);

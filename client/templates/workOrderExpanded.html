@@ -1,5 +1,5 @@
 <!-- Expanded view for each work order after the user clicks on the entry in the feed -->
-<div class="panel panel-success expanded-panel">
+<div class="panel panel-danger expanded-panel">
   <div class="panel-heading text-center heading">
 
   <!-- Expanded view header -->
@@ -19,8 +19,10 @@
       <div class="col-md-6">
         <ul class="list-group">
           <li class="list-group-item"><b>Created:</b> {{$ctrl.orderInformation.created_at}}</li>
-          <li class="list-group-item"><b>Estimated time:</b> {{$ctrl.orderInformation.duration}}</li>
+          <li class="list-group-item"><b>Billable Hours:</b> {{$ctrl.orderInformation.duration}}</li>
           <li class="list-group-item"><b>Client:</b> {{$ctrl.orderInformation.client}}</li>
+          <li class="list-group-item"><b>Created By:</b> {{$ctrl.orderInformation.username}}</li>
+          <li class="list-group-item"><b>Accepted By: </b> {{$ctrl.orderInformation.workername}}</li>
         </ul>
 
         <!--      JOB DETAILS      -->
@@ -47,15 +49,15 @@
             <div class="panel-heading text-center">
               Job Notes
             </div>
-            <div class="panel-body notes-panel">
-                <p>{{$ctrl.noteList}}</p>
-               <div class="input-group">
-                <span class="input-group-addon" id="basic-addon1">
-                  <!-- <span class="glyphicon glyphicon-pencil" aria-hidden="true" ng-click="$ctrl.submitNote($event)"></span> -->
-                </span>
-                <input type="submitNote" class="form-control" placeholder="Enter notes for the work order here" aria-describedby="basic-addon1" ng-keypress="$ctrl.submitNote($event); $ctrl.appGetWorkOrders" ng-model="$ctrl.newNote">
-              </div>
+            <p class="notes-panel" id="notes-list">{{$ctrl.noteList}}</p>
+            <div class="input-group">
+              <span class="input-group-addon" id="basic-addon1">
+                <span class="glyphicon glyphicon-pencil" aria-hidden="true" ng-click="$ctrl.submitNoteOnClick();"></span>
+              </span>
+              <input type="submitNote" id="notes-input" class="form-control" placeholder="Enter notes for the work order here" aria-describedby="basic-addon1" ng-keypress="$ctrl.submitNoteOnEnter($event); $ctrl.appGetWorkOrders" ng-model="$ctrl.newNote">
             </div>
+            <button type="button" id="notes-button" class="btn btn-md btn-primary" ng-click="$ctrl.submitNoteOnClick();">Submit
+            </button>
           </div>
           <!-- Toggle status - Done and In Progress -->
           <!-- <a href ng-click="goCats = !goCats">Toggle Cats</a> -->

@@ -46,7 +46,7 @@ angular.module('work-orders')
     var dateStr = currentDate.getFullYear() + '/' + currentDate.getMonth() + '/' + currentDate.getDate() + ' ' + currentDate.getHours() + ':' + currentDate.getMinutes() + ':' + currentDate.getSeconds();
 
     var queryObj = {
-      username: curUser.username,
+      username: curUser.first_name + ' ' + curUser.last_name,
       userphone: curUser.phone, // grab phone number from database
       notes: '',
       job_info: this.woJobDetails,
