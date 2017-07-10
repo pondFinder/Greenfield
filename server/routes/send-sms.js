@@ -1,4 +1,4 @@
-// Justine's Twilio Info
+//Twilio Info
 var accountSid = process.env.accountSid;
 var authToken = process.env.authToken;
 var phoneNumber = process.env.phoneNumber;
@@ -61,7 +61,7 @@ exports.message = function(messageData, cb) {
       id: msgDataArray[0]
     }, function(modelData){
       sendMessage(modelData.attributes);
-      cb(null, modelData.attributes); 
+      cb(null, modelData.attributes);
     });
   });
 };

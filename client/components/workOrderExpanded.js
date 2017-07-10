@@ -51,8 +51,6 @@ angular.module('work-orders')
       return res;
     }).
     then(function(res) {
-      // console.log('in second then for updateWorkOrder');
-      // console.log('res.data', res.data);
       $http.post('/sms', res.data)
 
     });
@@ -134,25 +132,7 @@ angular.module('work-orders')
   }
 
   this.acceptWorkOrder = function (cb) {
-    // var that = this;
-    // $http.delete('/delete-order/' + this.orderID)
-    // .then(function(res) {
-    //   //fix refresh bug
-    //   that.appGetWorkOrders();
-    //   cb();
-    // });
-    // var curUser = loginService.getCurrentUser().username;
-    // console.log('curUser', curUser);
-    // var that = this;
-    // $http.get('/get-user-info/' + curUser)
-    //   .then(function(res) {
-    //     console.log('res.data obj in acceptWorkOrder', res.data);
-    //     that.first_name = res.data.first_name;
-    //     that.last_name = res.data.last_name;
-    //   });
-    // new Accept Work Order
-    // console.log(this.orderInformation);
-    // this.orderInformation.is_done = !this.orderInformation.is_done;
+
     var curUser = JSON.parse(window.sessionStorage.currentUser);
     var first_name = curUser.first_name;
     var last_name = curUser.last_name;
@@ -161,7 +141,6 @@ angular.module('work-orders')
       workername: first_name + ' ' + last_name,
       workerphone: this.workerPhone
     }, this.toggleStatus);
-    // console.log(this.orderInformation);
 
   };
 
